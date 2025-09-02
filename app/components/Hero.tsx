@@ -40,8 +40,8 @@ export default function Hero() {
         {/* CTA Button */}
         <motion.a
           href="#classes"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           className="mt-8 inline-block bg-expresso text-light font-playfair text-lg font-medium py-3 px-8 
           shadow-md transition duration-300 hover:bg-coffee hover:shadow-lg"
