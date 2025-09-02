@@ -38,7 +38,7 @@ const faqs: FaqItem[] = [
   },
 ];
 
-export default function page() {
+export default function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);

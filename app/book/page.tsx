@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const BookPage = () => {
   return (
     <div className="min-h-screen flex justify-center items-center pt-8">
       Book Now
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BookPage;

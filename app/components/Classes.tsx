@@ -54,7 +54,7 @@ const Classes = () => {
         {/* Card 1 — Book */}
         <motion.div
           variants={item}
-          className="rounded-xl overflow-hidden text-center h-[60vh] bg-[url('/pose-2.webp')] bg-cover bg-center flex justify-center items-center"
+          className="rounded-xl overflow-hidden text-center h-[600px] bg-[url('/pose-2.webp')] bg-cover bg-center flex justify-center items-center"
         >
           <div className="rounded-xl overflow-hidden p-6 w-2/3 h-3/4 bg-bg/80 flex flex-col">
             <h3 className="font-playfair text-lg font-medium text-expresso">
@@ -77,7 +77,7 @@ const Classes = () => {
         {/* Card 2 — FAQs */}
         <motion.div
           variants={item}
-          className="rounded-xl overflow-hidden text-center h-[60vh] bg-[url('/pose-3.webp')] bg-cover bg-center flex justify-center items-center"
+          className="rounded-xl overflow-hidden text-center h-[600px] bg-[url('/pose-3.webp')] bg-cover bg-center flex justify-center items-center"
         >
           <div className="rounded-xl overflow-hidden p-6 w-2/3 h-3/4 bg-bg/80 flex flex-col">
             <h3 className="font-playfair text-lg font-medium text-expresso">
@@ -100,7 +100,7 @@ const Classes = () => {
         {/* Card 3 — Contact */}
         <motion.div
           variants={item}
-          className="rounded-xl overflow-hidden text-center h-[60vh] bg-[url('/pose-4.webp')] bg-cover bg-center flex justify-center items-center"
+          className="rounded-xl overflow-hidden text-center h-[600px] bg-[url('/pose-4.webp')] bg-cover bg-center flex justify-center items-center"
         >
           <div className="rounded-xl overflow-hidden p-6 w-2/3 h-3/4 bg-bg/80 flex flex-col">
             <h3 className="font-playfair text-lg font-medium text-expresso">
