@@ -49,7 +49,7 @@ export default function FaqPage() {
       : null;
 
   return (
-    <section className="w-full text-coffee overflow-x-clip">
+    <div className="w-full text-coffee overflow-x-clip pt-8">
       <div className="max-w-[1200px] mx-auto my-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* Left column: image */}
         <motion.div
@@ -142,6 +142,6 @@ export default function FaqPage() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

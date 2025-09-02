@@ -86,11 +86,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${bodoni.variable} antialiased`}>
+      <body
+        className={`${playfair.variable} ${bodoni.variable} antialiased min-h-screen flex flex-col`}
+      >
         <Header />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
-        {/* <Newsletter /> */}
       </body>
     </html>
   );

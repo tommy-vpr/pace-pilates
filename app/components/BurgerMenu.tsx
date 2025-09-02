@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 import { SlSocialTwitter } from "react-icons/sl";
 import { SiFacebook, SiInstagram } from "react-icons/si";
+import { usePathname } from "next/navigation";
 
 type MenuItem = { label: string; href: string; img: string };
 
@@ -37,6 +38,8 @@ export default function BurgerMenu({ scrolled = false }: Props) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const menuId = useId();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -58,7 +61,12 @@ export default function BurgerMenu({ scrolled = false }: Props) {
   }, []);
 
   // span color: light at top, dark after scroll
-  const closedColor = scrolled ? "bg-expresso" : "bg-light";
+  const closedColor = isHome
+    ? scrolled
+      ? "bg-expresso"
+      : "bg-light"
+    : "bg-expresso";
+
   const lineBase =
     "absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 rounded transition duration-75";
 

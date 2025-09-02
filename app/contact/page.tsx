@@ -25,7 +25,7 @@ export default function ContactPage() {
         <div className="absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-expresso/10 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-[1100px] px-4">
+      <div className="relative mx-auto max-w-[1100px] px-4 mt-12">
         {/* header */}
         <div className="mb-12 md:mb-16 text-center">
           {/* <h2 className="font-playfair text-5xl md:text-6xl text-expresso">

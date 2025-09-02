@@ -6,7 +6,7 @@ import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
-    <footer className="bg-espresso-800 text-coffee py-10 mt-20">
+    <footer className="bg-espresso-800 text-coffee py-10 mt-auto">
       <Newsletter />
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand / Text */}

@@ -3,7 +3,7 @@ import React from "react";
 const Newsletter = () => {
   return (
     <div className="w-full flex items-center justify-center flex-col mb-8">
-      <h2 className="text-2xl font-semibold mb-4 font-playfair text-expresso">
+      <h2 className="text-2xl font-semibold mb-4 font-playfair text-coffee">
         Sign up for the latest updates
       </h2>
 
@@ -21,7 +21,7 @@ const Newsletter = () => {
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-expresso text-white rounded-lg"
+          className="px-4 py-2 bg-coffee text-white rounded-lg"
         >
           Subscribe
         </button>
