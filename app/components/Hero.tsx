@@ -22,7 +22,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl md:text-6xl font-playfair text-light font-bold italic no-synth"
+          className="text-5xl md:text-7xl font-secondary uppercase text-light italic no-synth"
         >
           Strong Core, Strong Body
         </motion.h1>
@@ -32,7 +32,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="mt-4 max-w-2xl text-lg md:text-xl text-light/90 font-bodoni"
+          className="mt-4 max-w-2xl text-lg md:text-xl text-light/90 font-secondary"
         >
           Discover the power of mindful movement and controlled strength.
         </motion.p>

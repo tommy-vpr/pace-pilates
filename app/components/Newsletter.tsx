@@ -3,7 +3,7 @@ import React from "react";
 const Newsletter = () => {
   return (
     <div className="w-full flex items-center justify-center flex-col mb-8">
-      <h2 className="text-2xl font-semibold mb-4 font-playfair text-coffee">
+      <h2 className="text-3xl mb-4 font-playfair italic text-coffee">
         Sign up for the latest updates
       </h2>
 
