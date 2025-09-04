@@ -33,11 +33,11 @@ const container = {
 
 const Classes = () => {
   return (
-    <div className="max-w-[1200px] m-auto my-12">
+    <div className="p-6 md:p-0 max-w-[1200px] m-auto my-12">
       {/* Title */}
       <div className="flex items-center mb-12 md:mb-20">
         <div className="flex-grow border-t border-coffee"></div>
-        <p className="mx-4 font-playfair italic text-6xl text-coffee text-center opsz-auto no-synth">
+        <p className="mx-4 font-playfair italic text-3xl md:text-6xl text-coffee text-center opsz-auto no-synth">
           More Info
         </p>
         <div className="flex-grow border-t border-coffee"></div>
@@ -45,7 +45,7 @@ const Classes = () => {
 
       {/* Animated grid */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-y-8 md:gap-6"
         variants={container}
         initial="hidden"
         whileInView="show"

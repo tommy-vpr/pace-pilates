@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 const Intro = () => {
   return (
-    <div className="flex m-auto max-w-[1200px] py-12 gap-24 items-center text-coffee">
+    <div className="px-6 md:p-0 flex flex-col md:flex-row m-auto max-w-[1200px] py-12 gap-24 items-center text-coffee">
       {/* Left text section */}
       <motion.div
-        className="w-1/2"
+        className="w-full md:w-1/2"
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -36,7 +36,7 @@ const Intro = () => {
 
       {/* Right image section */}
       <motion.div
-        className="w-1/2 rounded-xl overflow-hidden"
+        className="w-full md:w-1/2 rounded-xl overflow-hidden"
         initial={{ opacity: 0, x: 60 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}

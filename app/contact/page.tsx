@@ -33,7 +33,7 @@ export default function ContactPage() {
           </h2> */}
           <div className="flex items-center mb-12 md:mb-20">
             <div className="flex-grow border-t border-coffee"></div>
-            <p className="mx-4 font-playfair italic text-6xl text-coffee text-center opsz-auto no-synth">
+            <p className="mx-4 font-playfair italic text-3xl md:text-6xl text-coffee text-center opsz-auto no-synth">
               Get in Touch
             </p>
             <div className="flex-grow border-t border-coffee"></div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               <dl className="mt-6 space-y-4 text-[15px]">
                 <div className="flex items-start gap-3">
                   <dt className="mt-0.5 opacity-80">Address</dt>
-                  <dd>123 Studio Lane, London</dd>
+                  <dd>123 Studio Lane, Los Angeles</dd>
                 </div>
                 <div className="flex items-start gap-3">
                   <dt className="mt-0.5 opacity-80">Email</dt>
@@ -77,16 +77,16 @@ export default function ContactPage() {
                   <dt className="mt-0.5 opacity-80">Phone</dt>
                   <dd>
                     <a
-                      href="tel:+440000000000"
+                      href="tel:+16265558888"
                       className="underline decoration-light/30 underline-offset-4 hover:decoration-light"
                     >
-                      +44 00 0000 0000
+                      (626) 555-888
                     </a>
                   </dd>
                 </div>
                 <div className="flex items-start gap-3">
                   <dt className="mt-0.5 opacity-80">Hours</dt>
-                  <dd>Mon–Sat: 7:00–19:00 · Sun: 9:00–13:00</dd>
+                  <dd>Mon–Sat: 12:00pm–7:00pm · Sun: 9:00–4:00</dd>
                 </div>
               </dl>
 
@@ -125,7 +125,7 @@ export default function ContactPage() {
                     name="firstName"
                     required
                     className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="Alex"
+                    placeholder="Jane"
                   />
                 </div>
                 <div className="md:col-span-1">
@@ -158,7 +158,7 @@ export default function ContactPage() {
                     type="tel"
                     name="phone"
                     className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="+44 …"
+                    placeholder="123-555-666"
                   />
                 </div>
                 <div className="md:col-span-2">

@@ -50,7 +50,7 @@ export default function FaqPage() {
 
   return (
     <div className="w-full text-coffee overflow-x-clip pt-8">
-      <div className="max-w-[1200px] mx-auto my-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div className="px-6 md:p-0 max-w-[1200px] mx-auto my-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* Left column: image */}
         <motion.div
           className="order-1 lg:order-none rounded-xl overflow-hidden"
