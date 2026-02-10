@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/sunset-logo.png", sizes: "32x32", type: "image/png" }],
-    apple: "/sunset-logo.png",
+    apple: "/pace_studio_word_logo.png",
   },
 };
 
@@ -89,9 +89,9 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${bodoni.variable} antialiased min-h-screen flex flex-col`}
       >
-        <Header />
+        {/* <Header /> */}
         <main className="flex-grow">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

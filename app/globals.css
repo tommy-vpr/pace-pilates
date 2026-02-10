@@ -67,3 +67,12 @@ body {
     background-image: url("/pilate-hero-3.webp");
   }
 }
+
+.main-hero {
+  background-image: url("/main-hero-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  background-color: white;
+}
