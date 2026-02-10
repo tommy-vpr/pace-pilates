@@ -57,3 +57,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-bg {
+  background-image: url("/pilate-hero-mobile.webp");
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: url("/pilate-hero-3.webp");
+  }
+}
