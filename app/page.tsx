@@ -67,13 +67,13 @@ const Home = () => {
         <div className="flex flex-col items-center gap-1 md:gap-2">
           <motion.h1
             {...fadeUp(0.8)}
-            className="font-playfair text-[11vw] md:text-[6vw] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
+            className="font-playfair text-[clamp(3rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
           >
             Setting the
           </motion.h1>
           <motion.h1
             {...fadeUp(1.0)}
-            className="font-playfair text-[11vw] md:text-[6vw] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
+            className="font-playfair text-[clamp(3rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
           >
             Pace
           </motion.h1>
@@ -125,7 +125,7 @@ const Home = () => {
 
       {/* Social icons at bottom */}
       <motion.div
-        className="absolute bottom-12 md:bottom-14 z-10 flex items-center gap-6"
+        className="absolute bottom-14 md:bottom-16 z-10 flex items-center gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2.4 }}
@@ -180,8 +180,8 @@ const Home = () => {
         </motion.a>
       </motion.div>
       <motion.div
-        className="absolute bottom-2 md:bottom-4 z-10 flex items-center gap-6
-        text-stone-400"
+        className="absolute bottom-4 md:bottom-6 z-10 flex items-center gap-2 md:gap-6
+        text-stone-400 text-sm md:text-base"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2.6 }}
