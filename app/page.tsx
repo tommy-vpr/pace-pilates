@@ -3,6 +3,10 @@
 import Image from "next/image";
 import React from "react";
 import { motion, type Easing, cubicBezier } from "framer-motion";
+import { BiMapPin } from "react-icons/bi";
+import { MdEmail, MdLocationPin, MdMap, MdPin } from "react-icons/md";
+import { FaMapPin } from "react-icons/fa";
+import { FaLocationPin } from "react-icons/fa6";
 
 const easeOutCubic: Easing = [0.25, 0.1, 0.25, 1];
 const easeOut: Easing = cubicBezier(0.25, 0.1, 0.25, 1);
@@ -48,13 +52,16 @@ const Home = () => {
       <div className="flex flex-col items-center gap-6 md:gap-8 max-w-5xl w-full z-10">
         {/* Logo */}
         <motion.div {...fadeIn(0.2)}>
-          <Image
-            src="/pace_studio_word_logo.png"
-            width={180}
-            height={180}
-            className="invert-50"
-            alt="Pace Studio"
-          />
+          <div className="relative mx-auto flex justify-center w-full">
+            <Image
+              src="/pace_studio_word_logo.png"
+              width={180}
+              height={180}
+              className="invert-50 w-[110px] sm:w-[140px] md:w-[180px] h-auto"
+              alt="Pace Studio"
+              sizes="(min-width: 768px) 180px, (min-width: 640px) 140px, 110px"
+            />
+          </div>
         </motion.div>
 
         {/* Divider line */}
@@ -67,13 +74,13 @@ const Home = () => {
         <div className="flex flex-col items-center gap-1 md:gap-2">
           <motion.h1
             {...fadeUp(0.8)}
-            className="font-playfair text-[clamp(3rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
+            className="font-playfair text-[clamp(2.6rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
           >
             Setting the
           </motion.h1>
           <motion.h1
             {...fadeUp(1.0)}
-            className="font-playfair text-[clamp(3rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
+            className="font-playfair text-[clamp(2.6rem,11vw,6.5rem)] leading-[0.9] text-stone-400 uppercase tracking-[0.15em]"
           >
             Pace
           </motion.h1>
@@ -125,13 +132,13 @@ const Home = () => {
 
       {/* Social icons at bottom */}
       <motion.div
-        className="absolute bottom-14 md:bottom-16 z-10 flex items-center gap-6"
+        className="z-10 flex items-center gap-6 mt-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2.4 }}
       >
         <motion.a
-          href="https://www.instagram.com/pace.studio"
+          href="https://www.instagram.com/pacestudio_co?igsh=NTc4MTIwNjQ2YQ=="
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
@@ -180,15 +187,18 @@ const Home = () => {
         </motion.a>
       </motion.div>
       <motion.div
-        className="absolute bottom-4 md:bottom-6 z-10 flex items-center gap-2 md:gap-6
-        text-stone-400 text-sm md:text-base"
+        className="absolute bottom-14 md:bottom-16 z-10 flex flex-col md:flex-row items-center gap-2 md:gap-6 text-stone-400"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.6 }}
+        transition={{ duration: 1, delay: 2.4 }}
       >
-        <span>444 N Harbor Blvd #140, Fullerton CA 92832</span>
-        <span>|</span>
-        <span>info@pace-studio.com</span>
+        <span className="flex items-center gap-2">
+          <MdLocationPin /> 444 N Harbor Blvd #140, Fullerton CA 92832
+        </span>
+        <span className="hidden md:inline-flex">|</span>
+        <span className="flex items-center gap-2">
+          <MdEmail /> Info@pace-studio.com
+        </span>
       </motion.div>
     </div>
   );

@@ -74,7 +74,9 @@ export const metadata: Metadata = {
     images: ["/pose-1.webp"],
   },
   icons: {
-    icon: [{ url: "/sunset-logo.png", sizes: "32x32", type: "image/png" }],
+    icon: [
+      { url: "/pace_studio_word_logo.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/pace_studio_word_logo.png",
   },
 };
