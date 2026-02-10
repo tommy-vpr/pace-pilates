@@ -105,7 +105,7 @@ const Home = () => {
           {...fadeUp(1.6)}
           className="text-center max-w-2xl mt-4 md:mt-8"
         >
-          <p className="font-playfair italic text-2xl md:text-4xl lg:text-5xl leading-snug text-stone-500/60">
+          <p className="font-playfair italic text-2xl md:text-4xl lg:text-5xl leading-snug text-[#a8c4b7]">
             {/* &ldquo;In 10 sessions you&apos;ll feel the difference, in 20
             you&apos;ll see the difference, and in 30 you&apos;ll have a whole
             new body.&rdquo; */}
