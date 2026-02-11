@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Pilates Studio",
     images: [
       {
-        url: "/pace_studio_logo.png", // place image in /publicgive
+        url: "/pace_studio_logo.jpg", // place image in /publicgive
         width: 1200,
         height: 630,
         alt: "Pace Studio | Mat Pilates",
@@ -70,11 +70,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pace Studio",
     description: "Pace Studio | Mat Pilates",
-    images: ["/pace_studio_logo.png"],
+    images: ["/pace_studio_logo.jpg"],
   },
   icons: {
-    icon: [{ url: "/pace_studio_logo.png", sizes: "32x32", type: "image/png" }],
-    apple: "/pace_studio_logo.png",
+    icon: [{ url: "/pace_studio_logo.jpg", sizes: "32x32", type: "image/png" }],
+    apple: "/pace_studio_logo.jpg",
   },
 };
 
