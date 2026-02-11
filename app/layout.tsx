@@ -33,9 +33,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pilates Studio | Book Classes Online",
-  description:
-    "Join our Pilates studio to strengthen your body, improve flexibility, and find balance. Book group or private Pilates classes online today.",
+  title: "Pace Studio",
+  description: "Pace Studio | Mat Pilates",
   keywords: [
     "Pilates",
     "Pilates classes",
@@ -48,19 +47,20 @@ export const metadata: Metadata = {
     "private pilates",
     "group pilates",
   ],
-  authors: [{ name: "Move | Sculpt | Tone", url: "https://mypilate.com" }],
+  authors: [
+    { name: "Pace Studio | Mat Pilates", url: "https://pace-studio.com" },
+  ],
   openGraph: {
-    title: "Pilates Studio | Book Your Next Class Online",
-    description:
-      "Strengthen your core, improve posture, and increase flexibility with our expert-led Pilates classes. Book your spot easily online.",
-    url: "https://mypilate.com",
+    title: "Pace Studio",
+    description: "Pace Studio | Mat Pilates",
+    url: "https://pace-studio.com",
     siteName: "Pilates Studio",
     images: [
       {
-        url: "/pose-1.webp", // place image in /publicgive
+        url: "/pace_studio_logo.png", // place image in /publicgive
         width: 1200,
         height: 630,
-        alt: "Pilates class session",
+        alt: "Pace Studio | Mat Pilates",
       },
     ],
     locale: "en_US",
@@ -68,16 +68,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pilates Studio | Book Pilates Classes Online",
-    description:
-      "Book Pilates classes online at our studio. Improve your strength, posture, and flexibility with experienced instructors.",
-    images: ["/pose-1.webp"],
+    title: "Pace Studio",
+    description: "Pace Studio | Mat Pilates",
+    images: ["/pace_studio_logo.png"],
   },
   icons: {
-    icon: [
-      { url: "/pace_studio_favicon.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/pace_studio_word_logo.png",
+    icon: [{ url: "/pace_studio_logo.png", sizes: "32x32", type: "image/png" }],
+    apple: "/pace_studio_logo.png",
   },
 };
 
