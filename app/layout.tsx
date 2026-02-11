@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/pace_studio_word_logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/pace_studio_favicon.png", sizes: "32x32", type: "image/png" },
     ],
     apple: "/pace_studio_word_logo.png",
   },
