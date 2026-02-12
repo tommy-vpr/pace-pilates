@@ -73,8 +73,14 @@ export const metadata: Metadata = {
     images: ["/pace_studio_logo.jpg"],
   },
   icons: {
-    icon: [{ url: "/pace_studio_logo.jpg", sizes: "32x32", type: "image/png" }],
-    apple: "/pace_studio_logo.jpg",
+    icon: [
+      {
+        url: "/pace-logo-final-v2-favicon.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    apple: "/pace-logo-final-v2-favicon.png",
   },
 };
 
