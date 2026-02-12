@@ -53,7 +53,7 @@ const Home = () => {
               src="/pace-logo-final-v1-alt.png"
               width={200}
               height={200}
-              className="invert-50 w-[160px] sm:w-[180px] md:w-[200px] h-auto"
+              className="w-[160px] sm:w-[180px] md:w-[200px] h-auto"
               alt="Pace Studio"
               sizes="(min-width: 768px) 200px, (min-width: 640px) 180x, 160px"
             />
