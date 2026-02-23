@@ -109,9 +109,14 @@ const Home = () => {
             {...fadeIn(2.2)}
             className="mt-6 md:mt-8 text-sm md:text-base tracking-[0.25em] uppercase text-stone-400"
           >
-            <span className="px-8 py-4 bg-stone-50 rounded-full shadow-xl shadow-stone-300/30">
+            <a
+              href="https://forms.gle/puULRVVgHkZDEgXD6"
+              target="_blank"
+              className="inline-block px-8 py-4 border border-stone-400 rounded-full duration-300
+  hover:bg-stone-400 hover:text-white cursor-pointer"
+            >
               Hiring Instructors
-            </span>
+            </a>
           </motion.footer>
         </motion.blockquote>
 
