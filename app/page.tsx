@@ -110,7 +110,7 @@ const Home = () => {
             className="mt-6 md:mt-8 text-sm md:text-base tracking-[0.25em] uppercase text-stone-400"
           >
             <a
-              href="https://forms.gle/puULRVVgHkZDEgXD6"
+              href="https://forms.gle/K1qUbjUCFiJxYd74A"
               target="_blank"
               className="inline-block px-8 py-4 border border-stone-400 rounded-full duration-300
   hover:bg-stone-400 hover:text-white cursor-pointer"
