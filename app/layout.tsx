@@ -1,12 +1,8 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Playfair_Display,
-  Bodoni_Moda,
-} from "next/font/google"; // Playfair is now Playfair_Display, and Bodoni_Moda for variable
+import { Fraunces, Geist } from "next/font/google";
 import "./globals.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Newsletter from "./components/Newsletter";
@@ -16,20 +12,17 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-// Import the variable version of Bodoni Moda, not the small caps version
-const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
+const fraunces = Fraunces({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // Use specific weights or a range
+  axes: ["opsz", "SOFT"],
   display: "swap",
 });
 
-// Use the variable version of Playfair Display
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const geist = Geist({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // Weights should match what is available in the variable font
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -90,13 +83,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfair.variable} ${bodoni.variable} antialiased min-h-screen flex flex-col`}
-      >
-        {/* <Header /> */}
-        <main className="flex-grow">{children}</main>
-        {/* <Footer /> */}
+    <html lang="en" className={`${fraunces.variable} ${geist.variable}`}>
+      <body className="bg-cream text-espresso font-sans antialiased">
+        {children}
       </body>
     </html>
   );

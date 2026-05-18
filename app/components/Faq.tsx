@@ -45,8 +45,8 @@ export default function Faq() {
 
   return (
     <MotionConfig>
-      <section className="w-full text-coffee overflow-x-clip">
-        <div className="max-w-[1200px] mx-auto my-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <section className="w-full px-6 md:px-10 py-24 text-espresso overflow-x-clip">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left column: image */}
           <motion.div
             className="order-1 lg:order-none rounded-xl overflow-hidden"
@@ -88,21 +88,21 @@ export default function Faq() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h3 className="font-playfair font-thin text-5xl md:text-6xl italic text-center md:text-left mb-8">
+            <h3 className="font-display text-3xl md:text-4xl italic text-center md:text-left mb-8">
               Faq
             </h3>
 
-            <div className="max-w-2xl mx-auto md:mx-0 font-playfair">
+            <div className="max-w-2xl mx-auto md:mx-0">
               {faqs.map((item, i) => {
                 const isOpen = openIndex === i;
                 return (
-                  <div key={item.q} className="py-5 border-b border-coffee">
+                  <div key={item.q} className="py-5 border-b border-cream-2">
                     <button
                       onClick={() => toggle(i)}
                       aria-expanded={isOpen}
                       className="w-full flex items-center justify-between text-left cursor-pointer"
                     >
-                      <span className="font-bold italic text-xl text-coffee">
+                      <span className="text-xl text-espresso font-display">
                         {item.q}
                       </span>
                       <motion.span
@@ -112,9 +112,9 @@ export default function Faq() {
                           stiffness: 300,
                           damping: 22,
                         }}
-                        className="shrink-0"
+                        className="shrink-0 text-stone"
                       >
-                        <FaPlus className="text-coffee" size={12} />
+                        <FaPlus className="text-espresso" size={12} />
                       </motion.span>
                     </button>
 
@@ -128,7 +128,7 @@ export default function Faq() {
                           transition={{ duration: 0.25, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <p className="mt-3 text-coffee">{item.a}</p>
+                          <p className="mt-3 text-stone">{item.a}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>

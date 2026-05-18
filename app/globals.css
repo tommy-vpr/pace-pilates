@@ -1,78 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand palette */
+  --color-cream: #f8f4ee;
+  --color-cream-2: #ede7db;
+  --color-cream-3: #fbfaf6;
+  --color-espresso: #2c2820;
+  --color-ink: #5c5546;
+  --color-stone: #8a7f6a;
+  --color-stone-soft: #b8a98c;
+  --color-pink-soft: #cbbeb5;
+  --color-sage: #6b7a5a;
+  --color-terra: #b85a3e;
+
+  /* Font families — wired up via next/font in layout.tsx */
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-playfair: var(--font-playfair);
-  /* --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono); */
-  --font-secondary: var(--font-bodoni);
-
-  --color-primary: #c8b6a6; /* Soft Beige */
-  --color-secondary: #a4907c; /* Taupe */
-  --color-accent: #d4a373; /* Caramel CTA */
-  --color-dark: #1d1d1b; /* Coffee Brown */
-  --color-light: #f7f4f1; /* Classic Beige */
-  --color-bg: #f7f4f1;
-  --color-text-primary: #3e3e3e; /* Charcoal */
-
-  --color-coffee: #42342a;
-  --color-expresso-alt: #1e1713;
-  --color-expresso: #2c221d;
-}
-
-/* add to globals.css */
+/* Tiny utility: tracked-out micro labels (— Classes / — Philosophy etc.) */
 @layer utilities {
-  .no-synth {
-    font-synthesis-weight: none;
-    font-synthesis-style: none;
-  }
-  .opsz-auto {
-    font-optical-sizing: auto;
-  } /* uses opsz axis when available */
-  /* If you want to force a big display size look (only works on variable font): */
-  .opsz-72 {
-    font-variation-settings: "opsz" 72;
-  }
-  .font-thin-render {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-stone);
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--);
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--color-bg);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.hero-bg {
-  background-image: url("/pilate-hero-mobile.webp");
-}
-
-@media (min-width: 768px) {
-  .hero-bg {
-    background-image: url("/pilate-hero-3.webp");
-  }
-}
-
-.main-hero {
-  background-image: url("/main-hero-bg.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.04;
-  background-color: white;
+/* Selection styling reinforces the palette */
+::selection {
+  background: var(--color-espresso);
+  color: var(--color-cream);
 }
