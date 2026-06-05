@@ -46,16 +46,16 @@ export default function Faq() {
   return (
     <MotionConfig>
       <section className="w-full px-6 md:px-10 py-24 text-espresso overflow-x-clip">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start justify-center">
           {/* Left column: image */}
           <motion.div
-            className="order-1 lg:order-none rounded-xl overflow-hidden"
+            className="ml-auto order-1 lg:order-none w-full xl:w-2/3 h-[360px] md:h-[480px] rounded-xl overflow-hidden"
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="relative w-full h-[360px] md:h-[480px] overflow-hidden">
+            <div className="relative w-full h-full overflow-hidden">
               <AnimatePresence mode="wait" initial={false}>
                 {currentImage && (
                   <motion.div
@@ -73,7 +73,7 @@ export default function Faq() {
                       priority={false}
                       className="object-cover"
                       sizes="(min-width: 1024px) 50vw, 100vw"
-                      quality={85}
+                      quality={100}
                     />
                   </motion.div>
                 )}
