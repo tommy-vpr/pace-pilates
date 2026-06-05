@@ -558,7 +558,11 @@ const footerLinks: {
   {
     heading: "Follow",
     links: [
-      { label: "Instagram", href: "#", icon: FaInstagram },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/bypacestudio",
+        icon: FaInstagram,
+      },
       { label: "TikTok", href: "#", icon: FaTiktok },
       { label: "Newsletter", href: "#", icon: FaEnvelope },
     ],
