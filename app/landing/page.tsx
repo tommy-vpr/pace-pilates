@@ -585,7 +585,7 @@ function Footer() {
             Fullerton CA 92832
           </address>
         </div>
-        <div className="flex gap-16">
+        <div className="flex gap-6 md:gap-16">
           {footerLinks.map((col) => (
             <div key={col.heading} className="text-[11px] leading-[2]">
               <div className="text-cream mb-1">{col.heading}</div>
@@ -608,7 +608,7 @@ function Footer() {
           ))}
         </div>
       </div>
-      <div className="pt-4 px-36 flex flex-col sm:justify-between gap-1.5 text-[10px] uppercase tracking-[0.1em] text-stone">
+      <div className="pt-4 xl:px-36 flex flex-col sm:justify-between gap-1.5 text-[10px] uppercase tracking-[0.1em] text-stone">
         <div className="h-[1px] w-full bg-cream/10 mb-4"></div>
         <span className="m-auto">© 2026 Pace Studio</span>
       </div>
