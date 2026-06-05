@@ -585,7 +585,7 @@ function Footer() {
             Fullerton CA 92832
           </address>
         </div>
-        <div className="flex gap-6 md:gap-16">
+        <div className="flex gap-8 md:gap-16">
           {footerLinks.map((col) => (
             <div key={col.heading} className="text-[11px] leading-[2]">
               <div className="text-cream mb-1">{col.heading}</div>
