@@ -260,7 +260,7 @@ export default function PaceClasses() {
               <p className="text-xs uppercase tracking-[0.3em] text-stone-500">
                 Stay in the loop
               </p>
-              <h3 className="mt-2 text-xl text-stone-900 sm:text-2xl">
+              <h3 className="mt-2 text-xl text-stone-800 sm:text-2xl">
                 subscribe to get our emails for the latest class info, new
                 merch, and exclusive events!
               </h3>
