@@ -159,7 +159,7 @@ export default function PaceClasses() {
 
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
-      <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture.webp')] bg-cover bg-center">
+      <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
         {/* NAV */}
         <nav
           className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
@@ -176,16 +176,16 @@ export default function PaceClasses() {
             />
 
             {/* Desktop links */}
-            <ul className="hidden items-center gap-6 text-stone-400 font-extralight md:flex">
+            <ul className="hidden items-center gap-6 text-stone-300 font-extralight md:flex">
               {NAV_LINKS.map((label) =>
                 label === "Classes" ? (
                   <li
                     key={label}
-                    className="relative"
+                    className="relative hover:text-stone-400 transition"
                     onMouseEnter={() => setClassesOpen(true)}
                     onMouseLeave={() => setClassesOpen(false)}
                   >
-                    <span className="inline-block cursor-pointer py-6 transition hover:text-stone-300">
+                    <span className="inline-block cursor-pointer py-6">
                       Classes
                     </span>
 
@@ -227,7 +227,7 @@ export default function PaceClasses() {
                 ) : (
                   <li
                     key={label}
-                    className="cursor-pointer transition hover:text-stone-300"
+                    className="cursor-pointer transition hover:text-stone-400"
                   >
                     {label}
                   </li>
@@ -339,8 +339,8 @@ export default function PaceClasses() {
         </nav>
 
         {/* LOGO HERO */}
-        <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture.webp')] bg-cover bg-center">
-          <div className="flex min-h-[50vh] w-full items-center justify-center px-6">
+        <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
+          <div className="flex min-h-[50vh] md:min-h-[60vh] w-full items-center justify-center px-6">
             <motion.div
               initial={{ opacity: 0, scale: 1.4 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -348,10 +348,10 @@ export default function PaceClasses() {
             >
               <Image
                 src="/pace-logo-final-v1-alt.png"
-                width={240}
-                height={240}
+                width={260}
+                height={260}
                 alt="pace studio"
-                className="brightness-110 w-40 sm:w-48 md:w-60 h-auto"
+                className="brightness-110 w-40 sm:w-48 md:w-80 h-auto"
               />
             </motion.div>
           </div>
