@@ -4,10 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconType } from "react-icons";
-import { FaInstagram, FaTiktok, FaEnvelope } from "react-icons/fa6";
+import { BiChevronDown } from "react-icons/bi";
+import { FaArrowDown } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaTiktok,
+  FaEnvelope,
+  FaBars,
+  FaXmark,
+} from "react-icons/fa6";
 
 /* ---------------------------------------------------------------- */
-/*  Pace Studio — full-left image, content right                     */
+/*  Pace Studio — mobile responsive                                  */
 /* ---------------------------------------------------------------- */
 
 type ClassStyle = {
@@ -26,6 +34,8 @@ type FooterLink = {
   href: string;
   icon?: IconType;
 };
+
+const NAV_LINKS = ["Schedule", "Classes", "Pricing", "FAQs", "Contact"];
 
 const CLASSES: ClassStyle[] = [
   {
@@ -78,8 +88,6 @@ const IG_POSTS = [
   "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
   "https://images.unsplash.com/photo-1591258370814-01609b341790?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1326&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1717500251716-27057c48ace4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1723406230636-aa8c4ac1e6c5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ];
 
 const footerLinks: {
@@ -109,9 +117,9 @@ const footerLinks: {
 ];
 
 export default function PaceClasses() {
-  const [active, setActive] = useState(CLASSES[0].key);
   const [scrolled, setScrolled] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [classesOpen, setClassesOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -124,18 +132,26 @@ export default function PaceClasses() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll(); // set correct state on mount/refresh
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture.webp')] bg-cover bg-center">
-        {/* NAV — fixed, pinned for the whole page, own texture */}
+        {/* NAV */}
         <nav
           className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-            scrolled ? "bg-stone-900" : "bg-transparent"
+            scrolled || menuOpen ? "bg-stone-900" : "bg-transparent"
           }`}
         >
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
@@ -146,54 +162,160 @@ export default function PaceClasses() {
               alt="pace studio"
               className="brightness-200"
             />
-            <ul className="flex items-center gap-6 text-stone-400 font-extralight">
-              <li className="hover:text-stone-300 transition cursor-pointer">
-                Schedule
-              </li>
-              <li className="hover:text-stone-300 transition cursor-pointer">
-                Classes
-              </li>
-              <li className="hover:text-stone-300 transition cursor-pointer">
-                Pricing
-              </li>
-              <li className="hover:text-stone-300 transition cursor-pointer">
-                FAQs
-              </li>
-              <li className="hover:text-stone-300 transition cursor-pointer">
-                Contact
-              </li>
-              <Link href={"https://www.instagram.com/bypacestudio"}>
-                <li>
-                  <FaInstagram className="hover:text-stone-300 transition cursor-pointer" />
-                </li>
-              </Link>
+
+            {/* Desktop links */}
+            <ul className="hidden items-center gap-6 text-stone-400 font-extralight md:flex">
+              {NAV_LINKS.map((label) =>
+                label === "Classes" ? (
+                  <li
+                    key={label}
+                    className="relative"
+                    onMouseEnter={() => setClassesOpen(true)}
+                    onMouseLeave={() => setClassesOpen(false)}
+                  >
+                    <span className="inline-block cursor-pointer py-6 transition hover:text-stone-300">
+                      Classes
+                    </span>
+
+                    {classesOpen && (
+                      <ul className="absolute left-1/2 top-full w-64 -translate-x-1/2 rounded-xl bg-stone-800 p-2 shadow-xl ring-1 ring-white/10">
+                        {CLASSES.map((c) => (
+                          <li key={c.key}>
+                            <Link
+                              href={`/classes/${c.key}`}
+                              className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                            >
+                              <span className="block text-stone-100">
+                                {c.tab}
+                              </span>
+                              <span className="block text-[11px] uppercase tracking-[0.15em] text-stone-400">
+                                {c.kicker}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li
+                    key={label}
+                    className="cursor-pointer transition hover:text-stone-300"
+                  >
+                    {label}
+                  </li>
+                ),
+              )}
 
               <li>
-                <FaTiktok className="hover:text-stone-300 transition cursor-pointer" />
+                <Link
+                  href="https://www.instagram.com/bypacestudio"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="cursor-pointer transition hover:text-stone-300" />
+                </Link>
+              </li>
+              <li>
+                <FaTiktok className="cursor-pointer transition hover:text-stone-300" />
+              </li>
+            </ul>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className="text-stone-300 text-xl md:hidden"
+            >
+              {menuOpen ? <FaXmark /> : <FaBars />}
+            </button>
+          </div>
+
+          {/* Mobile menu panel */}
+          <div
+            className={`overflow-hidden bg-stone-900 transition-[max-height] duration-300 md:hidden ${
+              menuOpen ? "max-h-96" : "max-h-0"
+            }`}
+          >
+            <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
+              {NAV_LINKS.map((label) =>
+                label === "Classes" ? (
+                  <li key={label}>
+                    <button
+                      onClick={() => setClassesOpen((v) => !v)}
+                      aria-expanded={classesOpen}
+                      className="flex w-full items-center justify-between py-3 text-left text-lg transition hover:text-white"
+                    >
+                      Classes
+                      <span
+                        className={`transition-transform ${classesOpen ? "rotate-180" : ""}`}
+                      >
+                        <BiChevronDown />
+                      </span>
+                    </button>
+                    <div
+                      className={`overflow-hidden pl-4 transition-[max-height] duration-300 ${
+                        classesOpen ? "max-h-60" : "max-h-0"
+                      }`}
+                    >
+                      {CLASSES.map((c) => (
+                        <Link
+                          key={c.key}
+                          href={`/classes/${c.key}`}
+                          onClick={() => setMenuOpen(false)}
+                          className="flex items-baseline gap-2 border-l border-white/10 py-2 pl-4 transition hover:text-white"
+                        >
+                          <span>{c.tab}</span>
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">
+                            {c.kicker}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </li>
+                ) : (
+                  <li key={label}>
+                    <button
+                      onClick={() => setMenuOpen(false)}
+                      className="block w-full py-3 text-left text-lg transition hover:text-white"
+                    >
+                      {label}
+                    </button>
+                  </li>
+                ),
+              )}
+
+              <li className="mt-2 flex items-center gap-6 border-t border-white/10 pt-4">
+                <Link
+                  href="https://www.instagram.com/bypacestudio"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="text-xl transition hover:text-white" />
+                </Link>
+                <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
               </li>
             </ul>
           </div>
         </nav>
 
-        {/* LOGO HERO — its own texture, separate copy */}
+        {/* LOGO HERO */}
         <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture.webp')] bg-cover bg-center">
-          <div className="w-full min-h-[50vh] flex justify-center items-center">
+          <div className="flex min-h-[50vh] w-full items-center justify-center px-6">
             <Image
               src="/pace-logo-final-v1-alt.png"
               width={240}
               height={240}
               alt="pace studio"
-              className="brightness-110"
+              className="brightness-110 w-40 sm:w-48 md:w-60 h-auto"
             />
           </div>
         </div>
       </div>
 
-      {/* ---------- Split hero: full-left image / content right ---------- */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto my-36">
+      {/* ---------- Split hero ---------- */}
+      <section className="mx-auto my-20 grid max-w-7xl grid-cols-1 gap-10 px-4 md:my-36 md:gap-0 lg:grid-cols-2">
         {/* LEFT — image */}
-        {/* LEFT — static hero image */}
-        <div className="relative min-h-[60vh] overflow-hidden">
+        <div className="relative min-h-[40vh] overflow-hidden rounded-lg md:min-h-[60vh] md:rounded-none">
           <img
             src="https://studio-twentyeight.nl/swfiles/files/L2b169-tab.jpg?nc=1774882259"
             alt="Pace Studio"
@@ -201,25 +323,26 @@ export default function PaceClasses() {
           />
         </div>
 
-        {/* RIGHT — brand + Classes + class links */}
-        {/* RIGHT — brand + nav */}
-        <div className="text-center flex flex-col justify-center items-center gap-6">
-          <h3 className="text-4xl text-stone-900">Join our platform now</h3>
-          <button className="cursor-pointer hover:bg-stone-800 transition bg-stone-900 text-white text-center py-2 px-6 rounded-full w-fit">
+        {/* RIGHT — CTA */}
+        <div className="flex flex-col items-center justify-center gap-6 text-center">
+          <h3 className="text-3xl text-stone-900 sm:text-4xl">
+            Join our platform now
+          </h3>
+          <button className="w-fit cursor-pointer rounded-full bg-stone-900 px-6 py-2 text-center text-white transition hover:bg-stone-800">
             Join Now
           </button>
         </div>
       </section>
 
       {/* ---------- Instagram feed ---------- */}
-      <section className="border-t border-stone-300 max-w-7xl mx-auto">
-        <div className="py-24">
-          <div className="flex justify-between items-center">
+      <section className="mx-auto max-w-7xl border-t border-stone-300 px-4">
+        <div className="py-16 md:py-24">
+          <div className="flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-stone-500">
                 On the feed
               </p>
-              <h2 className="mt-2 font-extralight text-3xl sm:text-4xl">
+              <h2 className="mt-2 text-2xl font-extralight sm:text-4xl">
                 @pacestudio
               </h2>
             </div>
@@ -227,7 +350,7 @@ export default function PaceClasses() {
               href="https://www.instagram.com/bypacestudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm uppercase tracking-[0.15em] text-stone-600 underline-offset-4 hover:underline"
+              className="flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-stone-600 underline-offset-4 hover:underline sm:text-sm"
             >
               <FaInstagram className="h-4 w-4" /> Follow
             </a>
@@ -255,7 +378,8 @@ export default function PaceClasses() {
         </div>
       </section>
 
-      <footer className="text-expresso max-w-7xl mx-auto py-12">
+      {/* ---------- Footer ---------- */}
+      <footer className="mx-auto max-w-7xl px-4 py-12">
         {/* Newsletter */}
         <div className="mb-12 pb-12">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -263,8 +387,8 @@ export default function PaceClasses() {
               <p className="text-xs uppercase tracking-[0.3em] text-stone-500">
                 Stay in the loop
               </p>
-              <h3 className="mt-2 text-xl text-stone-800 sm:text-2xl">
-                subscribe to get our emails for the latest class info, new
+              <h3 className="mt-2 text-lg text-stone-800 sm:text-2xl">
+                Subscribe to get our emails for the latest class info, new
                 merch, and exclusive events!
               </h3>
             </div>
@@ -272,10 +396,10 @@ export default function PaceClasses() {
             <div className="w-full max-w-sm">
               {subscribed ? (
                 <p className="font-serif text-lg text-stone-700">
-                  You're in — see you on the mat.
+                  You&apos;re in — see you on the mat.
                 </p>
               ) : (
-                <div className="flex items-center gap-2 border-b border-stone-400 pb-2 focus-within:border-stone-900 transition-colors">
+                <div className="flex items-center gap-2 border-b border-stone-400 pb-2 transition-colors focus-within:border-stone-900">
                   <input
                     type="email"
                     inputMode="email"
@@ -297,38 +421,36 @@ export default function PaceClasses() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
-          {" "}
-          <div className="flex flex-col md:flex-row md:items-center md:gap-4">
-            <div className="">
-              <Image
-                src="/pace-logo-final-v1-alt.png"
-                width={100}
-                height={100}
-                alt="Pace Studio"
-                className="brightness-70"
-              />
-            </div>
-            <div className="h-full w-[1px] bg-stone-300"></div>
-            <address className="not-italic text-xs leading-relaxed">
+
+        {/* Footer columns */}
+        <div className="flex gap-10 sm:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Image
+              src="/pace-logo-final-v1-alt.png"
+              width={100}
+              height={100}
+              alt="Pace Studio"
+              className="brightness-70"
+            />
+            <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
+            <address className="text-xs not-italic leading-relaxed">
               444 N Harbor Blvd #140
               <br />
               Fullerton CA 92832
             </address>
           </div>
-          <div className="flex gap-8 md:gap-16">
+
+          <div className="flex gap-12 sm:gap-16">
             {footerLinks.map((col) => (
               <div key={col.heading} className="text-[11px] leading-[2]">
-                <div className="text-cream mb-1">{col.heading}</div>
-
+                <div className="mb-1 text-stone-900">{col.heading}</div>
                 {col.links.map((link) => {
                   const Icon = link.icon;
-
                   return (
                     <Link
                       key={link.label}
                       href={link.href}
-                      className="flex items-center gap-2 hover:text-stone-500 transition-colors"
+                      className="flex items-center gap-2 transition-colors hover:text-stone-500"
                     >
                       {Icon && <Icon className="h-3.5 w-3.5" />}
                       <span>{link.label}</span>
@@ -340,29 +462,12 @@ export default function PaceClasses() {
           </div>
         </div>
 
-        <div className="pt-4 xl:px-36 flex flex-col sm:justify-between gap-1.5 text-[10px] uppercase tracking-[0.1em] text-stone">
-          {/* <div className="h-[1px] w-full bg-cream/10 mb-4"></div> */}
-          <span className="mt-8 mx-auto text-stone-700">
-            © 2026 Pace Studio - All Rights Reserved.
+        <div className="flex flex-col gap-1.5 pt-4 text-[10px] uppercase tracking-[0.1em]">
+          <span className="mx-auto mt-8 text-stone-700">
+            © 2026 Pace Studio — All Rights Reserved.
           </span>
         </div>
       </footer>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-\[fadeIn_0\.5s_ease\] {
-            animation: none;
-          }
-        }
-      `}</style>
     </main>
   );
 }
