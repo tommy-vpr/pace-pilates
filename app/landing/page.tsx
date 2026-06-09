@@ -397,19 +397,18 @@ export default function PaceClasses() {
           transition={{ duration: 0.7, ease: EASE }}
           className="flex flex-col items-center justify-center gap-6"
         >
-          <span className="font-extralight text-stone-500 uppercase">
-            move / scuplt / tone
+          <span className="font-extralight flex items-center text-stone-500 uppercase">
+            MOVE{" "}
+            <span className="mx-2 text-xl bg-stone-500 h-1 w-1 rounded-full block"></span>
+            SCULPT{" "}
+            <span className="mx-2 text-xl bg-stone-500 h-1 w-1 rounded-full block"></span>
+            STRENGTHEN
           </span>
-          <h3 className="text-3xl text-stone-800 sm:text-4xl">
-            Join our platform
+          <h3 className="text-3xl text-stone-800 sm:text-4xl text-center">
+            A Stronger Body Starts Here
           </h3>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.96 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-800"
-          >
-            Join Now
+          <motion.button className="w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700">
+            Book a Session
           </motion.button>
         </motion.div>
       </motion.section>
@@ -487,7 +486,7 @@ export default function PaceClasses() {
               </h3>
             </div>
 
-            <div className="w-full w-full md:max-w-sm">
+            <div className="w-full md:max-w-sm">
               <AnimatePresence mode="wait">
                 {subscribed ? (
                   <motion.p
@@ -517,10 +516,9 @@ export default function PaceClasses() {
                       className="w-full bg-transparent text-stone-800 placeholder:text-stone-400 focus:outline-none"
                     />
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.96 }}
                       onClick={handleSubscribe}
-                      className="shrink-0 cursor-pointer rounded-full bg-stone-800 px-5 py-2 text-xs uppercase tracking-[0.15em] text-white transition-colors hover:bg-stone-700"
+                      className="shrink-0 cursor-pointer rounded-full bg-stone-800 px-5 py-2 text-xs uppercase tracking-[0.15em] text-white 
+                      transition-colors hover:bg-stone-700"
                     >
                       Subscribe
                     </motion.button>
