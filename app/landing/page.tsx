@@ -162,9 +162,12 @@ export default function PaceClasses() {
               <li className="hover:text-stone-300 transition cursor-pointer">
                 Contact
               </li>
-              <li>
-                <FaInstagram className="hover:text-stone-300 transition cursor-pointer" />
-              </li>
+              <Link href={"https://www.instagram.com/bypacestudio"}>
+                <li>
+                  <FaInstagram className="hover:text-stone-300 transition cursor-pointer" />
+                </li>
+              </Link>
+
               <li>
                 <FaTiktok className="hover:text-stone-300 transition cursor-pointer" />
               </li>
@@ -221,7 +224,7 @@ export default function PaceClasses() {
               </h2>
             </div>
             <a
-              href="https://instagram.com/pacestudio"
+              href="https://www.instagram.com/bypacestudio"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm uppercase tracking-[0.15em] text-stone-600 underline-offset-4 hover:underline"
@@ -234,7 +237,7 @@ export default function PaceClasses() {
             {IG_POSTS.map((src, i) => (
               <a
                 key={i}
-                href="https://instagram.com/pacestudio"
+                href="https://www.instagram.com/bypacestudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative aspect-square overflow-hidden rounded-lg bg-stone-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-800"
