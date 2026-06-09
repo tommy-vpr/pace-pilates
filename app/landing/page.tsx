@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { IconType } from "react-icons";
 import { BiChevronDown } from "react-icons/bi";
-import { FaArrowDown } from "react-icons/fa";
 import {
   FaInstagram,
   FaTiktok,
@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa6";
 
 /* ---------------------------------------------------------------- */
-/*  Pace Studio — mobile responsive                                  */
+/*  Pace Studio — mobile responsive + framer motion                  */
 /* ---------------------------------------------------------------- */
 
 type ClassStyle = {
@@ -116,6 +116,19 @@ const footerLinks: {
   },
 ];
 
+/* --- shared motion variants --- */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0 },
+};
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15 } },
+};
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function PaceClasses() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -137,7 +150,6 @@ export default function PaceClasses() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // lock body scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -177,25 +189,40 @@ export default function PaceClasses() {
                       Classes
                     </span>
 
-                    {classesOpen && (
-                      <ul className="absolute left-1/2 top-full w-64 -translate-x-1/2 rounded-xl bg-stone-800 p-2 shadow-xl ring-1 ring-white/10">
-                        {CLASSES.map((c) => (
-                          <li key={c.key}>
-                            <Link
-                              href={`/classes/${c.key}`}
-                              className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-white/5"
+                    <AnimatePresence>
+                      {classesOpen && (
+                        <motion.ul
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          className="absolute left-1/2 top-full w-64 -translate-x-1/2 bg-stone-800 p-2 shadow-xl ring-1 ring-white/10"
+                        >
+                          {CLASSES.map((c) => (
+                            <motion.li
+                              key={c.key}
+                              transition={{
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 25,
+                              }}
                             >
-                              <span className="block text-stone-100">
-                                {c.tab}
-                              </span>
-                              <span className="block text-[11px] uppercase tracking-[0.15em] text-stone-400">
-                                {c.kicker}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                              <Link
+                                href={`/classes/${c.key}`}
+                                className="block px-3 py-2.5 transition-colors hover:bg-white/5"
+                              >
+                                <span className="block text-stone-100">
+                                  {c.tab}
+                                </span>
+                                <span className="block text-[11px] uppercase tracking-[0.15em] text-stone-400">
+                                  {c.kicker}
+                                </span>
+                              </Link>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
                   </li>
                 ) : (
                   <li
@@ -232,107 +259,149 @@ export default function PaceClasses() {
           </div>
 
           {/* Mobile menu panel */}
-          <div
-            className={`overflow-hidden bg-stone-900 transition-[max-height] duration-300 md:hidden ${
-              menuOpen ? "max-h-96" : "max-h-0"
-            }`}
-          >
-            <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
-              {NAV_LINKS.map((label) =>
-                label === "Classes" ? (
-                  <li key={label}>
-                    <button
-                      onClick={() => setClassesOpen((v) => !v)}
-                      aria-expanded={classesOpen}
-                      className="flex w-full items-center justify-between py-3 text-left text-lg transition hover:text-white"
-                    >
-                      Classes
-                      <span
-                        className={`transition-transform ${classesOpen ? "rotate-180" : ""}`}
-                      >
-                        <BiChevronDown />
-                      </span>
-                    </button>
-                    <div
-                      className={`overflow-hidden pl-4 transition-[max-height] duration-300 ${
-                        classesOpen ? "max-h-60" : "max-h-0"
-                      }`}
-                    >
-                      {CLASSES.map((c) => (
-                        <Link
-                          key={c.key}
-                          href={`/classes/${c.key}`}
-                          onClick={() => setMenuOpen(false)}
-                          className="flex items-baseline gap-2 border-l border-white/10 py-2 pl-4 transition hover:text-white"
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden bg-stone-900 md:hidden"
+              >
+                <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
+                  {NAV_LINKS.map((label) =>
+                    label === "Classes" ? (
+                      <li key={label}>
+                        <button
+                          onClick={() => setClassesOpen((v) => !v)}
+                          aria-expanded={classesOpen}
+                          className="flex w-full items-center justify-between py-3 text-left text-lg transition hover:text-white"
                         >
-                          <span>{c.tab}</span>
-                          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">
-                            {c.kicker}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </li>
-                ) : (
-                  <li key={label}>
-                    <button
-                      onClick={() => setMenuOpen(false)}
-                      className="block w-full py-3 text-left text-lg transition hover:text-white"
-                    >
-                      {label}
-                    </button>
-                  </li>
-                ),
-              )}
+                          Classes
+                          <motion.span
+                            animate={{ rotate: classesOpen ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <BiChevronDown />
+                          </motion.span>
+                        </button>
+                        <AnimatePresence>
+                          {classesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: "easeInOut" }}
+                              className="overflow-hidden pl-4"
+                            >
+                              {CLASSES.map((c) => (
+                                <Link
+                                  key={c.key}
+                                  href={`/classes/${c.key}`}
+                                  onClick={() => setMenuOpen(false)}
+                                  className="flex items-baseline gap-2 border-l border-white/10 py-2 pl-4 transition hover:text-white"
+                                >
+                                  <span>{c.tab}</span>
+                                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">
+                                    {c.kicker}
+                                  </span>
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </li>
+                    ) : (
+                      <li key={label}>
+                        <button
+                          onClick={() => setMenuOpen(false)}
+                          className="block w-full py-3 text-left text-lg transition hover:text-white"
+                        >
+                          {label}
+                        </button>
+                      </li>
+                    ),
+                  )}
 
-              <li className="mt-2 flex items-center gap-6 border-t border-white/10 pt-4">
-                <Link
-                  href="https://www.instagram.com/bypacestudio"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="text-xl transition hover:text-white" />
-                </Link>
-                <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
-              </li>
-            </ul>
-          </div>
+                  <li className="mt-2 flex items-center gap-6 border-t border-white/10 pt-4">
+                    <Link
+                      href="https://www.instagram.com/bypacestudio"
+                      aria-label="Instagram"
+                    >
+                      <FaInstagram className="text-xl transition hover:text-white" />
+                    </Link>
+                    <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         {/* LOGO HERO */}
         <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture.webp')] bg-cover bg-center">
           <div className="flex min-h-[50vh] w-full items-center justify-center px-6">
-            <Image
-              src="/pace-logo-final-v1-alt.png"
-              width={240}
-              height={240}
-              alt="pace studio"
-              className="brightness-110 w-40 sm:w-48 md:w-60 h-auto"
-            />
+            <motion.div
+              initial={{ opacity: 0, scale: 1.4 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, ease: EASE }}
+            >
+              <Image
+                src="/pace-logo-final-v1-alt.png"
+                width={240}
+                height={240}
+                alt="pace studio"
+                className="brightness-110 w-40 sm:w-48 md:w-60 h-auto"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* ---------- Split hero ---------- */}
-      <section className="mx-auto my-20 grid max-w-7xl grid-cols-1 gap-10 px-4 md:my-36 md:gap-0 lg:grid-cols-2">
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={stagger}
+        className="mx-auto my-20 grid max-w-7xl grid-cols-1 gap-10 px-4 md:my-36 md:gap-0 lg:grid-cols-2"
+      >
         {/* LEFT — image */}
-        <div className="relative min-h-[40vh] overflow-hidden rounded-lg md:min-h-[60vh] md:rounded-none">
-          <img
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 1.1, ease: EASE }}
+          className="relative min-h-[40vh] overflow-hidden rounded-lg md:min-h-[60vh] md:rounded-none"
+        >
+          <motion.img
             src="https://studio-twentyeight.nl/swfiles/files/L2b169-tab.jpg?nc=1774882259"
             alt="Pace Studio"
             className="absolute inset-0 h-full w-full object-cover"
+            initial={{ scale: 1.08 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.8, ease: EASE }}
           />
-        </div>
+        </motion.div>
 
         {/* RIGHT — CTA */}
-        <div className="flex flex-col items-center justify-center gap-6 text-center">
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="flex flex-col items-center justify-center gap-6 text-center"
+        >
           <h3 className="text-3xl text-stone-900 sm:text-4xl">
             Join our platform now
           </h3>
-          <button className="w-fit cursor-pointer rounded-full bg-stone-900 px-6 py-2 text-center text-white transition hover:bg-stone-800">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="w-fit cursor-pointer rounded-full bg-stone-900 px-6 py-2 text-center text-white transition-colors hover:bg-stone-800"
+          >
             Join Now
-          </button>
-        </div>
-      </section>
+          </motion.button>
+        </motion.div>
+      </motion.section>
 
       {/* ---------- Instagram feed ---------- */}
       <section className="mx-auto max-w-7xl border-t border-stone-300 px-4">
@@ -356,10 +425,18 @@ export default function PaceClasses() {
             </a>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-[1px] sm:grid-cols-3 lg:grid-cols-4">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={stagger}
+            className="mt-8 grid grid-cols-2 gap-[1px] sm:grid-cols-3 lg:grid-cols-4"
+          >
             {IG_POSTS.map((src, i) => (
-              <a
+              <motion.a
                 key={i}
+                variants={fadeUp}
+                transition={{ duration: 0.8, ease: EASE }}
                 href="https://www.instagram.com/bypacestudio"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -372,16 +449,22 @@ export default function PaceClasses() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span className="absolute inset-0 bg-stone-900/0 transition-colors group-hover:bg-stone-900/20" />
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ---------- Footer ---------- */}
       <footer className="mx-auto max-w-7xl px-4 py-12">
         {/* Newsletter */}
-        <div className="mb-12 pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1.2, ease: EASE }}
+          className="mb-12 pb-12"
+        >
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-md">
               <p className="text-xs uppercase tracking-[0.3em] text-stone-500">
@@ -394,33 +477,48 @@ export default function PaceClasses() {
             </div>
 
             <div className="w-full max-w-sm">
-              {subscribed ? (
-                <p className="font-serif text-lg text-stone-700">
-                  You&apos;re in — see you on the mat.
-                </p>
-              ) : (
-                <div className="flex items-center gap-2 border-b border-stone-400 pb-2 transition-colors focus-within:border-stone-900">
-                  <input
-                    type="email"
-                    inputMode="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
-                    placeholder="your@email.com"
-                    aria-label="Email address"
-                    className="w-full bg-transparent text-stone-800 placeholder:text-stone-400 focus:outline-none"
-                  />
-                  <button
-                    onClick={handleSubscribe}
-                    className="shrink-0 cursor-pointer rounded-full bg-stone-900 px-5 py-2 text-xs uppercase tracking-[0.15em] text-white transition-colors hover:bg-stone-700"
+              <AnimatePresence mode="wait">
+                {subscribed ? (
+                  <motion.p
+                    key="done"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="font-serif text-lg text-stone-700"
                   >
-                    Subscribe
-                  </button>
-                </div>
-              )}
+                    You&apos;re in — see you on the mat.
+                  </motion.p>
+                ) : (
+                  <motion.div
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center gap-2 border-b border-stone-400 pb-2 transition-colors focus-within:border-stone-900"
+                  >
+                    <input
+                      type="email"
+                      inputMode="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+                      placeholder="your@email.com"
+                      aria-label="Email address"
+                      className="w-full bg-transparent text-stone-800 placeholder:text-stone-400 focus:outline-none"
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.96 }}
+                      onClick={handleSubscribe}
+                      className="shrink-0 cursor-pointer rounded-full bg-stone-900 px-5 py-2 text-xs uppercase tracking-[0.15em] text-white transition-colors hover:bg-stone-700"
+                    >
+                      Subscribe
+                    </motion.button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer columns */}
         <div className="flex gap-10 sm:justify-between">
