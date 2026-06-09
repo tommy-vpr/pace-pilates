@@ -193,7 +193,7 @@ export default function PaceClasses() {
       <section className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto my-36">
         {/* LEFT — image */}
         {/* LEFT — static hero image */}
-        <div className="relative min-h-[60vh] rounded-lg overflow-hidden">
+        <div className="relative min-h-[60vh] overflow-hidden">
           <img
             src="https://studio-twentyeight.nl/swfiles/files/L2b169-tab.jpg?nc=1774882259"
             alt="Pace Studio"
@@ -233,14 +233,14 @@ export default function PaceClasses() {
             </a>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-[1px] sm:grid-cols-3 lg:grid-cols-4">
             {IG_POSTS.map((src, i) => (
               <a
                 key={i}
                 href="https://www.instagram.com/bypacestudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-square overflow-hidden rounded-lg bg-stone-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-800"
+                className="group relative aspect-square overflow-hidden bg-stone-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-800"
               >
                 <img
                   src={src}
