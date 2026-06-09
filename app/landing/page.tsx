@@ -13,6 +13,13 @@ import {
   FaBars,
   FaXmark,
 } from "react-icons/fa6";
+import {
+  IoLocation,
+  IoLocationOutline,
+  IoMail,
+  IoMailOutline,
+  IoPhonePortraitOutline,
+} from "react-icons/io5";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — mobile responsive + framer motion                  */
@@ -239,11 +246,11 @@ export default function PaceClasses() {
                   href="https://www.instagram.com/bypacestudio"
                   aria-label="Instagram"
                 >
-                  <FaInstagram className="cursor-pointer transition hover:text-stone-300" />
+                  <FaInstagram className="cursor-pointer transition hover:text-stone-400" />
                 </Link>
               </li>
               <li>
-                <FaTiktok className="cursor-pointer transition hover:text-stone-300" />
+                <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
               </li>
             </ul>
 
@@ -476,7 +483,7 @@ export default function PaceClasses() {
               </h3>
             </div>
 
-            <div className="w-full max-w-sm">
+            <div className="w-full w-full md:max-w-sm">
               <AnimatePresence mode="wait">
                 {subscribed ? (
                   <motion.p
@@ -521,7 +528,7 @@ export default function PaceClasses() {
         </motion.div>
 
         {/* Footer columns */}
-        <div className="flex gap-10 sm:justify-between">
+        <div className="flex gap-10 justify-between">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Image
               src="/pace-logo-final-v1-alt.png"
@@ -531,17 +538,37 @@ export default function PaceClasses() {
               className="brightness-70"
             />
             <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
-            <address className="text-xs not-italic leading-relaxed">
-              444 N Harbor Blvd #140
-              <br />
-              Fullerton CA 92832
-            </address>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-start gap-2">
+                <IoPhonePortraitOutline className="h-4 w-4" />
+                <span className="text-xs not-italic leading-relaxed">
+                  (626) 888-9999
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <IoMailOutline className="h-4 w-4" />
+                <span className="text-xs not-italic leading-relaxed">
+                  bypacestudio@gmail.com
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <IoLocationOutline className="h-4 w-6 sm:w-4" />
+                <address className="text-xs not-italic leading-relaxed">
+                  444 N Harbor Blvd #140 Fullerton CA 92832
+                </address>
+              </div>
+            </div>
           </div>
 
           <div className="flex gap-12 sm:gap-16">
             {footerLinks.map((col) => (
-              <div key={col.heading} className="text-[11px] leading-[2]">
-                <div className="mb-1 text-stone-900">{col.heading}</div>
+              <div
+                key={col.heading}
+                className="text-[12px] md:text-base leading-[2]"
+              >
+                <div className="mb-1 text-stone-900 underline underline-offset-4">
+                  {col.heading}
+                </div>
                 {col.links.map((link) => {
                   const Icon = link.icon;
                   return (
