@@ -371,8 +371,8 @@ export default function PaceClasses() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         variants={stagger}
-        className="mx-auto my-20 grid max-w-7xl grid-cols-1 gap-10 md:my-36 md:gap-0 lg:grid-cols-2  
-        xl:bg-white p-2 sm:p-4 md:p-8 xl:shadow-2xl xl:shadow-stone-700/10"
+        className="mx-auto my-14 sm:my-20 grid max-w-7xl grid-cols-1 gap-10 md:my-36 md:gap-0 lg:grid-cols-2  
+        xl:bg-white p-4 md:p-8 xl:shadow-2xl xl:shadow-stone-700/10"
       >
         {/* LEFT — image */}
         <motion.div
@@ -530,7 +530,7 @@ export default function PaceClasses() {
         </motion.div>
 
         {/* Footer columns */}
-        <div className="flex gap-10 justify-between">
+        <div className="flex gap-4 md:gap-10 justify-between">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Image
               src="/pace-logo-final-v1-alt.png"
@@ -562,7 +562,7 @@ export default function PaceClasses() {
             </div>
           </div>
 
-          <div className="flex gap-12 sm:gap-16">
+          <div className="flex gap-8 sm:gap-16">
             {footerLinks.map((col) => (
               <div
                 key={col.heading}
