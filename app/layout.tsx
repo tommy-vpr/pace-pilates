@@ -84,6 +84,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${geist.variable}`}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/ps_main_texture_3.webp"
+          type="image/webp"
+        />
+      </head>
       <body className="bg-cream text-espresso font-sans antialiased">
         {children}
       </body>
