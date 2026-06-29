@@ -89,7 +89,9 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
+            <Link href={TIKTOK} aria-label="TikTok">
+              <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
+            </Link>
           </li>
         </ul>
 
