@@ -20,6 +20,7 @@ import {
   IoMailOutline,
   IoPhonePortraitOutline,
 } from "react-icons/io5";
+import { INSTAGRAM, TIKTOK } from "@/lib/site";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — mobile responsive + framer motion                  */
@@ -120,10 +121,14 @@ const footerLinks: {
     links: [
       {
         label: "Instagram",
-        href: "https://www.instagram.com/bypacestudio",
+        href: INSTAGRAM,
         icon: FaInstagram,
       },
-      { label: "TikTok", href: "#", icon: FaTiktok },
+      {
+        label: "TikTok",
+        href: TIKTOK,
+        icon: FaTiktok,
+      },
       { label: "Newsletter", href: "#", icon: FaEnvelope },
     ],
   },
@@ -209,9 +214,9 @@ export default function PaceClasses() {
           className="relative min-h-[40vh] overflow-hidden md:min-h-[60vh]"
         >
           <motion.img
-            src="https://studio-twentyeight.nl/swfiles/files/L2b169-tab.jpg?nc=1774882259"
+            src="/pace-studios-main.webp"
             alt="Pace Studio"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-bottom md:object-center"
             initial={{ scale: 1.08 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -232,14 +237,14 @@ export default function PaceClasses() {
             <span className="mx-2 text-xl bg-stone-500 h-1 w-1 rounded-full block"></span>
             STRENGTHEN
           </span>
-          <h3 className="text-3xl text-stone-800 sm:text-4xl text-center">
-            A Stronger Body Starts Here
+          <h3 className="uppercase text-3xl text-stone-800 sm:text-4xl text-center">
+            Your Journey Your Pace
           </h3>
           <motion.a
             href="/schedule"
             className="w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
           >
-            Book a Session
+            Book Now
           </motion.a>
         </motion.div>
       </motion.section>

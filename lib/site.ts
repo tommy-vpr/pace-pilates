@@ -5,6 +5,7 @@ export const EMAIL = "info@pace-studio.com";
 export const PHONE = "(626) 888-9999";
 export const PHONE_TEL = "+16268889999";
 export const INSTAGRAM = "https://www.instagram.com/bypacestudio";
+export const TIKTOK = "https://www.tiktok.com/@bypacestudio";
 export const ADDRESS = "444 N Harbor Blvd #140 Fullerton CA 92832";
 
 export type NavLink = { label: string; href: string };
@@ -61,7 +62,11 @@ export const FOOTER_LINKS: FooterColumn[] = [
     heading: "Follow",
     links: [
       { label: "Instagram", href: INSTAGRAM, icon: FaInstagram },
-      { label: "TikTok", href: "#", icon: FaTiktok },
+      {
+        label: "TikTok",
+        href: TIKTOK,
+        icon: FaTiktok,
+      },
       { label: "Newsletter", href: "#", icon: FaEnvelope },
     ],
   },
