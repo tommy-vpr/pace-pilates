@@ -42,7 +42,13 @@ type FooterLink = {
   icon?: IconType;
 };
 
-const NAV_LINKS = ["Schedule", "Classes", "Pricing", "FAQs", "Contact"];
+const NAV_LINKS: { label: string; href: string }[] = [
+  { label: "Schedule", href: "/schedule" },
+  { label: "Classes", href: "/classes" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Contact", href: "/contact" },
+];
 
 const CLASSES: ClassStyle[] = [
   {
@@ -184,7 +190,7 @@ export default function PaceClasses() {
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-6 text-stone-300 font-extralight md:flex">
-              {NAV_LINKS.map((label) =>
+              {NAV_LINKS.map(({ label, href }) =>
                 label === "Classes" ? (
                   <li
                     key={label}
@@ -232,11 +238,8 @@ export default function PaceClasses() {
                     </AnimatePresence>
                   </li>
                 ) : (
-                  <li
-                    key={label}
-                    className="cursor-pointer transition hover:text-stone-400"
-                  >
-                    {label}
+                  <li key={label} className="transition hover:text-stone-400">
+                    <Link href={href}>{label}</Link>
                   </li>
                 ),
               )}
@@ -276,7 +279,7 @@ export default function PaceClasses() {
                 className="overflow-hidden bg-stone-900 md:hidden"
               >
                 <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
-                  {NAV_LINKS.map((label) =>
+                  {NAV_LINKS.map(({ label, href }) =>
                     label === "Classes" ? (
                       <li key={label}>
                         <button
@@ -320,12 +323,13 @@ export default function PaceClasses() {
                       </li>
                     ) : (
                       <li key={label}>
-                        <button
+                        <Link
+                          href={href}
                           onClick={() => setMenuOpen(false)}
                           className="block w-full py-3 text-left text-lg transition hover:text-white"
                         >
                           {label}
-                        </button>
+                        </Link>
                       </li>
                     ),
                   )}
@@ -550,7 +554,7 @@ export default function PaceClasses() {
               <div className="flex items-start gap-2">
                 <IoMailOutline className="h-4 w-4" />
                 <span className="text-xs not-italic leading-relaxed">
-                  bypacestudio@gmail.com
+                  info@pace-studio.com
                 </span>
               </div>
               <div className="flex items-start gap-2">

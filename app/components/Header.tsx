@@ -1,47 +1,142 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
-import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaInstagram, FaTiktok, FaBars, FaXmark } from "react-icons/fa6";
+
+import { NAV_LINKS, INSTAGRAM } from "@/lib/site";
+
+// Routes that must trigger a full page load instead of a client-side
+// transition. The Mindbody schedule widget keeps global iframe state that
+// breaks when React remounts it, so /schedule needs a fresh document load.
+const HARD_LINKS = new Set(["/schedule"]);
+
+function NavItem({
+  href,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  if (HARD_LINKS.has(href)) {
+    return (
+      <a href={href} className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // if (pathname !== "/") return;
-
-    const onScroll = () => setScrolled(window.scrollY > 8); // threshold
-    onScroll(); // set initial state
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
-    <header
-      className={clsx(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-bg" : "bg-transparent"
-      )}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        scrolled || menuOpen ? "bg-stone-900" : "bg-transparent"
+      }`}
     >
-      <div className="max-w-[1200px] mx-auto flex justify-between p-6">
-        <Link href={"/"}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
+        <Link href="/" aria-label="Pace Studio home">
           <Image
-            src="/pace_studio_word_logo.png"
-            alt="logo"
-            width={100}
-            height={50}
-            className={clsx(
-              pathname === "/" ? (scrolled ? "invert" : "") : "invert-100"
-            )}
+            src="/pace-logo-final-v1-alt.png"
+            width={60}
+            height={60}
+            alt="pace studio"
+            className="brightness-200"
           />
         </Link>
-        <BurgerMenu scrolled={scrolled} />
+
+        {/* Desktop links */}
+        <ul className="hidden items-center gap-6 text-stone-300 font-extralight md:flex">
+          {NAV_LINKS.map(({ label, href }) => (
+            <li key={label} className="transition hover:text-stone-400">
+              <NavItem href={href} className="inline-block py-6">
+                {label}
+              </NavItem>
+            </li>
+          ))}
+
+          <li>
+            <Link href={INSTAGRAM} aria-label="Instagram">
+              <FaInstagram className="cursor-pointer transition hover:text-stone-400" />
+            </Link>
+          </li>
+          <li>
+            <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
+          </li>
+        </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="text-stone-300 text-xl md:hidden"
+        >
+          {menuOpen ? <FaXmark /> : <FaBars />}
+        </button>
       </div>
-    </header>
+
+      {/* Mobile menu panel */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden bg-stone-900 md:hidden"
+          >
+            <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
+              {NAV_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <NavItem
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block w-full py-3 text-left text-lg transition hover:text-white"
+                  >
+                    {label}
+                  </NavItem>
+                </li>
+              ))}
+
+              <li className="mt-2 flex items-center gap-6 border-t border-white/10 pt-4">
+                <Link href={INSTAGRAM} aria-label="Instagram">
+                  <FaInstagram className="text-xl transition hover:text-white" />
+                </Link>
+                <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

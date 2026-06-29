@@ -1,57 +1,89 @@
-"use client";
 import Image from "next/image";
-import { SiFacebook, SiInstagram } from "react-icons/si";
-import { SlSocialTwitter } from "react-icons/sl";
-import Newsletter from "./Newsletter";
+import Link from "next/link";
+import {
+  IoMailOutline,
+  IoLocationOutline,
+  IoPhonePortraitOutline,
+} from "react-icons/io5";
+
+import { FOOTER_LINKS, EMAIL, PHONE, ADDRESS } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-espresso-800 text-coffee py-10 mt-auto">
-      <Newsletter />
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Brand / Text */}
-        <div className="text-center md:text-left">
+    <footer className="mx-auto max-w-7xl border-t border-stone-300 px-4 py-12">
+      <div className="flex gap-4 md:gap-10 justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <Image
-            src="/pace_studio_word_logo.png"
-            alt=""
+            src="/pace-logo-final-v1-alt.png"
             width={100}
-            height={50}
-            className="invert"
+            height={100}
+            alt="Pace Studio"
+            className="brightness-70"
           />
+          <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-start gap-2">
+              <IoPhonePortraitOutline className="h-4 w-4" />
+              <span className="text-xs not-italic leading-relaxed">
+                {PHONE}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <IoMailOutline className="h-4 w-4" />
+              <span className="text-xs not-italic leading-relaxed">
+                {EMAIL}
+              </span>
+            </div>
+            <div className="flex items-start gap-2">
+              <IoLocationOutline className="h-4 w-6 sm:w-4" />
+              <address className="text-xs not-italic leading-relaxed">
+                {ADDRESS}
+              </address>
+            </div>
+          </div>
         </div>
 
-        {/* Social icons */}
-        <div className="flex gap-6 text-2xl">
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:bg-coffee hover:text-[#f4f1ef] rounded-full p-2 duration-200 transition-colors"
-          >
-            <SlSocialTwitter />
-          </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:bg-coffee hover:text-[#f4f1ef] rounded-full p-2 duration-200 transition-colors"
-          >
-            <SiFacebook />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:bg-coffee hover:text-[#f4f1ef] rounded-full p-2 duration-200 transition-colors"
-          >
-            <SiInstagram />
-          </a>
+        <div className="flex gap-8 sm:gap-16">
+          {FOOTER_LINKS.map((col) => (
+            <div
+              key={col.heading}
+              className="text-[12px] md:text-base leading-[2]"
+            >
+              <div className="mb-1 text-stone-900 underline underline-offset-4">
+                {col.heading}
+              </div>
+              {col.links.map((link) => {
+                const Icon = link.icon;
+                // /schedule must be a full page load — the Mindbody widget
+                // breaks on client-side remounts. Use a plain anchor for it.
+                const isHardLink = link.href === "/schedule";
+                const inner = (
+                  <>
+                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    <span>{link.label}</span>
+                  </>
+                );
+                const className =
+                  "flex items-center gap-2 transition-colors hover:text-stone-500";
+                return isHardLink ? (
+                  <a key={link.label} href={link.href} className={className}>
+                    {inner}
+                  </a>
+                ) : (
+                  <Link key={link.label} href={link.href} className={className}>
+                    {inner}
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="mt-8 text-center text-sm text-beige-300">
-        © {new Date().getFullYear()} Pilates Studio. All rights reserved.
+      <div className="flex flex-col gap-1.5 pt-4 text-[10px] uppercase tracking-[0.1em]">
+        <span className="mx-auto mt-8 text-stone-700">
+          © 2026 Pace Studio — All Rights Reserved.
+        </span>
       </div>
     </footer>
   );

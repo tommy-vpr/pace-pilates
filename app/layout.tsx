@@ -5,12 +5,6 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Newsletter from "./components/Newsletter";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const fraunces = Fraunces({
   variable: "--font-display",
@@ -50,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Pilates Studio",
     images: [
       {
-        url: "/pace-logo-final-v2-favicon.png", // place image in /publicgive
+        url: "/pace-logo-final-v2-favicon.png",
         width: 1200,
         height: 630,
         alt: "Pace Studio | Mat Pilates",
@@ -93,7 +87,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-cream text-espresso font-sans antialiased">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

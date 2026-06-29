@@ -1,206 +1,115 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { IconType } from "react-icons";
+import { FaInstagram } from "react-icons/fa6";
+import { IoMailOutline } from "react-icons/io5";
 
-export default function ContactPage() {
-  const [submitting, setSubmitting] = useState(false);
-  const [sent, setSent] = useState(false);
+import { EMAIL, INSTAGRAM, fadeUp, stagger, EASE } from "@/lib/site";
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setSent(true);
-    e.currentTarget.reset();
-  }
+/* ---------------------------------------------------------------- */
+/*  Pace Studio — Contact                                            */
+/* ---------------------------------------------------------------- */
 
+const CONTACT_METHODS: {
+  icon: IconType;
+  label: string;
+  value: string;
+  href: string;
+  external?: boolean;
+}[] = [
+  {
+    icon: IoMailOutline,
+    label: "Email",
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
+  },
+  {
+    icon: FaInstagram,
+    label: "Instagram",
+    value: "@bypacestudio",
+    href: INSTAGRAM,
+    external: true,
+  },
+];
+
+export default function PaceContact() {
   return (
-    <section className="relative py-16 md:py-24 bg-bg overflow-x-clip">
-      {/* subtle background ornament */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-coffee/20 blur-3xl" />
-        <div className="absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-expresso/10 blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto max-w-[1100px] px-4 mt-12">
-        {/* header */}
-        <div className="mb-12 md:mb-16 text-center">
-          {/* <h2 className="font-playfair text-5xl md:text-6xl text-expresso">
+    <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
+      {/* PAGE HERO */}
+      <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
+        <div className="flex min-h-[40vh] md:min-h-[50vh] w-full flex-col items-center justify-center px-6 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
+            className="mt-4 text-4xl font-extralight text-stone-50 sm:text-5xl md:text-6xl"
+          >
             Get in Touch
-          </h2> */}
-          <div className="flex items-center mb-12 md:mb-20">
-            <div className="flex-grow border-t border-coffee"></div>
-            <p className="mx-4 font-playfair italic text-3xl md:text-6xl text-coffee text-center opsz-auto no-synth">
-              Get in Touch
-            </p>
-            <div className="flex-grow border-t border-coffee"></div>
-          </div>
-          <p className="mt-3 text-lg text-expresso/80 font-playfair">
-            Questions, bookings, or special requests—send us a note and we’ll
-            reply within 24 hours.
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* left: studio card */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5 }}
-            className="relative overflow-hidden rounded-3xl bg-expresso text-light shadow-xl"
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
+            className="mt-4 max-w-md font-extralight text-stone-300"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(1200px_400px_at_-10%_-10%,rgba(255,255,255,0.15),transparent)]" />
-            <div className="relative p-8 md:p-10">
-              <h3 className="font-playfair text-3xl">Pace Studio</h3>
-
-              <dl className="mt-6 space-y-4 text-[15px]">
-                <div className="flex items-start gap-3">
-                  <dt className="mt-0.5 opacity-80">Address</dt>
-                  <dd>123 Studio Lane, Los Angeles</dd>
-                </div>
-                <div className="flex items-start gap-3">
-                  <dt className="mt-0.5 opacity-80">Email</dt>
-                  <dd>
-                    <a
-                      href="mailto:hello@pacestudio.com"
-                      className="underline decoration-light/30 underline-offset-4 hover:decoration-light"
-                    >
-                      hello@pacestudio.com
-                    </a>
-                  </dd>
-                </div>
-                <div className="flex items-start gap-3">
-                  <dt className="mt-0.5 opacity-80">Phone</dt>
-                  <dd>
-                    <a
-                      href="tel:+16265558888"
-                      className="underline decoration-light/30 underline-offset-4 hover:decoration-light"
-                    >
-                      (626) 555-888
-                    </a>
-                  </dd>
-                </div>
-                <div className="flex items-start gap-3">
-                  <dt className="mt-0.5 opacity-80">Hours</dt>
-                  <dd>Mon–Sat: 12:00pm–7:00pm · Sun: 9:00–4:00</dd>
-                </div>
-              </dl>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/schedule"
-                  className="rounded-full bg-light text-expresso px-5 py-2 font-medium hover:bg-light/90 transition"
-                >
-                  View Schedule
-                </Link>
-                <Link
-                  href="/faqs"
-                  className="rounded-full border border-light/40 px-5 py-2 font-medium text-light hover:bg-light/10 transition"
-                >
-                  FAQs
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* right: form */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="rounded-3xl bg-light/70 backdrop-blur shadow-xl border border-coffee/20"
-          >
-            <form onSubmit={onSubmit} className="p-6 md:p-8">
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-expresso/80">
-                    First name
-                  </label>
-                  <input
-                    name="firstName"
-                    required
-                    className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="Jane"
-                  />
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-expresso/80">
-                    Last name
-                  </label>
-                  <input
-                    name="lastName"
-                    className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="Smith"
-                  />
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-expresso/80">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-expresso/80">
-                    Phone (optional)
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="123-555-666"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-expresso/80">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    className="mt-2 w-full rounded-xl border border-coffee/30 bg-white/70 px-4 py-3 text-expresso placeholder:text-expresso/40 focus:outline-none focus:ring-2 focus:ring-expresso/50"
-                    placeholder="Tell us what you’re looking for…"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-sm text-expresso/70">
-                  We’ll get back within one business day.
-                </p>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="rounded-full bg-expresso px-6 py-2.5 font-medium text-light hover:bg-expresso/90 disabled:opacity-60 disabled:cursor-not-allowed transition"
-                >
-                  {submitting ? "Sending…" : "Send Message"}
-                </button>
-              </div>
-
-              {sent && (
-                <div
-                  className="mt-4 rounded-xl border border-coffee/30 bg-light/80 px-4 py-3 text-expresso"
-                  role="status"
-                  aria-live="polite"
-                >
-                  Thanks! Your message has been sent.
-                </div>
-              )}
-            </form>
-          </motion.div>
+            Questions about class, membership, or your first visit? Reach out —
+            we&apos;ll get right back to you.
+          </motion.p>
         </div>
       </div>
-    </section>
+
+      {/* ---------- Contact methods ---------- */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+        className="mx-auto my-14 max-w-2xl px-4 sm:my-20 md:my-28"
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {CONTACT_METHODS.map(
+            ({ icon: Icon, label, value, href, external }) => (
+              <motion.a
+                key={label}
+                variants={fadeUp}
+                transition={{ duration: 0.7, ease: EASE }}
+                href={href}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="group flex flex-col items-center gap-3 border border-stone-300 bg-white/40 px-6 py-10 text-center transition-colors hover:border-stone-800 hover:bg-white"
+              >
+                <Icon className="h-6 w-6 text-stone-500 transition-colors group-hover:text-stone-800" />
+                <span className="text-[11px] uppercase tracking-[0.2em] text-stone-500">
+                  {label}
+                </span>
+                <span className="break-all text-sm font-extralight text-stone-800">
+                  {value}
+                </span>
+              </motion.a>
+            ),
+          )}
+        </div>
+
+        {/* Primary CTA */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="mt-14 flex flex-col items-center gap-5 text-center"
+        >
+          <p className="font-extralight text-stone-500">
+            Prefer to drop us a line directly?
+          </p>
+          <Link
+            href={`mailto:${EMAIL}`}
+            className="w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
+          >
+            Email Us
+          </Link>
+        </motion.div>
+      </motion.section>
+    </main>
   );
 }
