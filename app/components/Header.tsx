@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaInstagram, FaTiktok, FaBars, FaXmark } from "react-icons/fa6";
 
-import { NAV_LINKS, INSTAGRAM } from "@/lib/site";
+import { NAV_LINKS, INSTAGRAM, TIKTOK } from "@/lib/site";
 
 // Routes that must trigger a full page load instead of a client-side
 // transition. The Mindbody schedule widget keeps global iframe state that
@@ -131,7 +131,9 @@ export default function Header() {
                 <Link href={INSTAGRAM} aria-label="Instagram">
                   <FaInstagram className="text-xl transition hover:text-white" />
                 </Link>
-                <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
+                <Link href={TIKTOK} aria-label="Tiktok">
+                  <FaTiktok className="cursor-pointer text-xl transition hover:text-white" />
+                </Link>
               </li>
             </ul>
           </motion.div>
