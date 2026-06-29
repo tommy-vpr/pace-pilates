@@ -546,12 +546,6 @@ export default function PaceClasses() {
             <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
             <div className="flex flex-col gap-2">
               <div className="flex items-start gap-2">
-                <IoPhonePortraitOutline className="h-4 w-4" />
-                <span className="text-xs not-italic leading-relaxed">
-                  (626) 888-9999
-                </span>
-              </div>
-              <div className="flex items-start gap-2">
                 <IoMailOutline className="h-4 w-4" />
                 <span className="text-xs not-italic leading-relaxed">
                   info@pace-studio.com

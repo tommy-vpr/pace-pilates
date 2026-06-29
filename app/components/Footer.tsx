@@ -6,7 +6,7 @@ import {
   IoPhonePortraitOutline,
 } from "react-icons/io5";
 
-import { FOOTER_LINKS, EMAIL, PHONE, ADDRESS } from "@/lib/site";
+import { FOOTER_LINKS, EMAIL, ADDRESS } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -22,12 +22,6 @@ export default function Footer() {
           />
           <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
           <div className="flex flex-col gap-2">
-            <div className="flex items-start gap-2">
-              <IoPhonePortraitOutline className="h-4 w-4" />
-              <span className="text-xs not-italic leading-relaxed">
-                {PHONE}
-              </span>
-            </div>
             <div className="flex items-start gap-2">
               <IoMailOutline className="h-4 w-4" />
               <span className="text-xs not-italic leading-relaxed">

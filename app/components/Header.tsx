@@ -88,9 +88,6 @@ export default function Header() {
               <FaInstagram className="cursor-pointer transition hover:text-stone-400" />
             </Link>
           </li>
-          <li>
-            <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
-          </li>
         </ul>
 
         {/* Mobile hamburger */}
