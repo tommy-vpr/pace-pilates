@@ -1,10 +1,6 @@
 import { IconType } from "react-icons";
 import { FaInstagram, FaTiktok, FaEnvelope } from "react-icons/fa6";
 
-/* ---------------------------------------------------------------- */
-/*  Pace Studio — single source of truth for nav, classes, contact  */
-/* ---------------------------------------------------------------- */
-
 export const EMAIL = "info@pace-studio.com";
 export const PHONE = "(626) 888-9999";
 export const PHONE_TEL = "+16268889999";
