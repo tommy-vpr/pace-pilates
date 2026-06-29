@@ -63,12 +63,12 @@ export default function PaceClasses() {
             <p className="mt-5 font-extralight leading-relaxed text-stone-600">
               {c.blurb}
             </p>
-            <Link
+            <a
               href="/schedule"
               className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
             >
               Book {c.name}
-            </Link>
+            </a>
           </motion.article>
         ))}
       </motion.section>
