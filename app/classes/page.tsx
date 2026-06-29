@@ -15,14 +15,6 @@ export default function PaceClasses() {
       {/* PAGE HERO */}
       <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
         <div className="flex min-h-[40vh] md:min-h-[50vh] w-full flex-col items-center justify-center px-6 text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="text-xs uppercase tracking-[0.3em] text-stone-300"
-          >
-            Move with intention
-          </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
