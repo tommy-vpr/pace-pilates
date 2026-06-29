@@ -123,6 +123,7 @@ const footerLinks: {
         href: "https://www.instagram.com/bypacestudio",
         icon: FaInstagram,
       },
+      { label: "TikTok", href: "#", icon: FaTiktok },
       { label: "Newsletter", href: "#", icon: FaEnvelope },
     ],
   },
