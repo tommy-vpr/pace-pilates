@@ -37,7 +37,7 @@ export default function PageHero({ title, kicker, subtitle }: PageHeroProps) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: kicker ? 0.1 : 0 }}
-          className="mt-4 text-4xl font-extralight text-stone-50 sm:text-5xl md:text-6xl"
+          className="mt-4 text-4xl font-extralight text-stone-200 sm:text-5xl md:text-6xl"
         >
           {title}
         </motion.h1>
