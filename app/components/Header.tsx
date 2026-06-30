@@ -104,7 +104,7 @@ export default function Header() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="text-stone-300 text-xl md:hidden"
+          className="text-stone-200 text-xl md:hidden"
         >
           {menuOpen ? <FaXmark /> : <FaBars />}
         </button>
@@ -118,9 +118,9 @@ export default function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden bg-stone-900 md:hidden"
+            className="overflow-hidden bg-brand md:hidden"
           >
-            <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-300 font-extralight">
+            <ul className="flex flex-col gap-1 px-4 pb-6 pt-2 text-stone-200 font-extralight">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={label}>
                   <NavItem
