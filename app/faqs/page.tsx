@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BiChevronDown } from "react-icons/bi";
 
 import { fadeUp, EASE } from "@/lib/site";
+import PageHero from "../components/PageHero";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — FAQs                                               */
@@ -67,20 +68,7 @@ export default function PaceFaqs() {
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       {/* PAGE HERO */}
-      <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
-        <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
-          <div className="flex min-h-[40vh] md:min-h-[50vh] w-full flex-col items-center justify-center px-6 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
-              className="mt-4 text-4xl font-extralight text-stone-50 sm:text-5xl md:text-6xl"
-            >
-              Frequently Asked Questions
-            </motion.h1>
-          </div>
-        </div>
-      </div>
+      <PageHero title="Frequently Asked Questions" />
 
       {/* ---------- FAQ accordion ---------- */}
       <motion.section

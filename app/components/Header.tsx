@@ -7,6 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaInstagram, FaTiktok, FaBars, FaXmark } from "react-icons/fa6";
 
 import { NAV_LINKS, INSTAGRAM, TIKTOK } from "@/lib/site";
+import { Geist, Bebas_Neue } from "next/font/google";
+
+const genome = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-genome",
+});
 
 // Routes that must trigger a full page load instead of a client-side
 // transition. The Mindbody schedule widget keeps global iframe state that
@@ -59,24 +66,21 @@ export default function Header() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled || menuOpen ? "bg-stone-900" : "bg-transparent"
+        scrolled || menuOpen ? "bg-brand" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
-        <Link href="/" aria-label="Pace Studio home">
-          <Image
-            src="/pace-logo-final-v1-alt.png"
-            width={60}
-            height={60}
-            alt="pace studio"
-            className="brightness-200"
-          />
+        <Link
+          href="/"
+          className="font-[var(--font-genome)] ultra-thin text-lg uppercase text-stone-200"
+        >
+          PACE STUDIO
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-6 text-stone-300 font-extralight md:flex">
+        <ul className="hidden items-center gap-6 text-stone-200 font-extralight md:flex">
           {NAV_LINKS.map(({ label, href }) => (
-            <li key={label} className="transition hover:text-stone-400">
+            <li key={label} className="transition hover:text-stone-700">
               <NavItem href={href} className="inline-block py-6">
                 {label}
               </NavItem>
@@ -85,12 +89,12 @@ export default function Header() {
 
           <li>
             <Link href={INSTAGRAM} aria-label="Instagram">
-              <FaInstagram className="cursor-pointer transition hover:text-stone-400" />
+              <FaInstagram className="cursor-pointer transition hover:text-stone-700" />
             </Link>
           </li>
           <li>
             <Link href={TIKTOK} aria-label="TikTok">
-              <FaTiktok className="cursor-pointer transition hover:text-stone-400" />
+              <FaTiktok className="cursor-pointer transition hover:text-stone-700" />
             </Link>
           </li>
         </ul>

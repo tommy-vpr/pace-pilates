@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { fadeUp, stagger, EASE } from "@/lib/site";
+import PageHero from "../components/PageHero";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — Pricing                                            */
@@ -37,18 +38,7 @@ export default function PacePricing() {
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       {/* PAGE HERO */}
-      <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
-        <div className="flex min-h-[40vh] md:min-h-[50vh] w-full flex-col items-center justify-center px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
-            className="mt-4 text-4xl font-extralight text-stone-50 sm:text-5xl md:text-6xl"
-          >
-            Pricing
-          </motion.h1>
-        </div>
-      </div>
+      <PageHero title="Pricing" />
 
       <div className="mx-auto my-14 max-w-5xl px-4 sm:my-20 md:my-28">
         {/* ---------- Intro offer ---------- */}
@@ -57,15 +47,17 @@ export default function PacePricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.9, ease: EASE }}
-          className="flex flex-col items-center gap-3 bg-stone-900 px-6 py-12 text-center text-stone-50"
+          className="flex flex-col items-center gap-3 bg-brand px-6 py-12 text-center text-stone-50"
         >
-          <span className="text-[11px] uppercase tracking-[0.3em] text-stone-400">
+          <span className="text-[11px] uppercase tracking-[0.3em] text-stone-700">
             New here
           </span>
           <h2 className="text-2xl font-extralight sm:text-3xl">
             First 2 Weeks Unlimited
           </h2>
-          <p className="text-4xl font-extralight sm:text-5xl">$39</p>
+          <p className="text-4xl font-extralight sm:text-5xl text-stone-700">
+            $39
+          </p>
           <Link
             href="/schedule"
             className="mt-4 w-fit cursor-pointer rounded-full bg-stone-50 px-6 py-2 text-center text-stone-900 transition-colors hover:bg-stone-200"

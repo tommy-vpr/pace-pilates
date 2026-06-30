@@ -177,9 +177,9 @@ export default function PaceClasses() {
 
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
-      <div className="bg-[linear-gradient(rgba(28,25,23,0.7),rgba(28,25,23,0.7)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
+      <div className="bg-[linear-gradient(rgba(28,25,23,0.2),rgba(28,25,23,0)),url('/main-bg.webp')] bg-cover bg-center">
         {/* LOGO HERO */}
-        <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
+        <div className="bg-[linear-gradient(rgba(28,25,23,0.1),rgba(28,25,23,0)),url('/main-bg.webp')] bg-cover bg-center">
           <div className="flex min-h-[50vh] md:min-h-[60vh] w-full items-center justify-center px-6">
             <motion.div
               initial={{ opacity: 0, scale: 1.4 }}
@@ -187,11 +187,11 @@ export default function PaceClasses() {
               transition={{ duration: 0.9, ease: EASE }}
             >
               <Image
-                src="/pace-logo-final-v1-alt.png"
+                src="/ps-logo-website-white.png"
                 width={260}
                 height={260}
                 alt="pace studio"
-                className="brightness-110 w-40 sm:w-48 md:w-80 h-auto"
+                className="w-40 sm:w-48 md:w-80 h-auto"
               />
             </motion.div>
           </div>

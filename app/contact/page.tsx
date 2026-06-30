@@ -7,6 +7,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { IoMailOutline } from "react-icons/io5";
 
 import { EMAIL, INSTAGRAM, fadeUp, stagger, EASE } from "@/lib/site";
+import PageHero from "../components/PageHero";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — Contact                                            */
@@ -38,27 +39,11 @@ export default function PaceContact() {
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       {/* PAGE HERO */}
-      <div className="bg-[linear-gradient(rgba(28,25,23,0.5),rgba(28,25,23,0.5)),url('/ps_main_texture_3.webp')] bg-cover bg-center">
-        <div className="flex min-h-[40vh] md:min-h-[50vh] w-full flex-col items-center justify-center px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
-            className="mt-4 text-4xl font-extralight text-stone-50 sm:text-5xl md:text-6xl"
-          >
-            Get in Touch
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
-            className="mt-4 max-w-md font-extralight text-stone-300"
-          >
-            Questions about class, membership, or your first visit? Reach out —
-            we&apos;ll get right back to you.
-          </motion.p>
-        </div>
-      </div>
+      <PageHero
+        kicker="Say hello"
+        title="Get in Touch"
+        subtitle="Questions about class, membership, or your first visit? Reach out — we'll get right back to you."
+      />
 
       {/* ---------- Contact methods ---------- */}
       <motion.section

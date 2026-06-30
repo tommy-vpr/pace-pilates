@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="flex gap-4 md:gap-10 justify-between">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <Image
-            src="/pace-logo-final-v1-alt.png"
+            src="/pace-logo-final-v2-alt.png"
             width={100}
             height={100}
             alt="Pace Studio"

@@ -1,10 +1,23 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Fraunces, Geist } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+const genome = localFont({
+  src: [
+    {
+      path: "../public/fonts/Genome-Thin.otf",
+      weight: "100",
+      style: "normal",
+    },
+  ],
+  variable: "--font-genome",
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   variable: "--font-display",
@@ -86,7 +99,9 @@ export default function RootLayout({
           type="image/webp"
         />
       </head>
-      <body className="bg-cream text-espresso font-sans antialiased">
+      <body
+        className={`bg-cream text-espresso font-sans antialiased ${genome.variable}`}
+      >
         <Header />
         {children}
         <Footer />
