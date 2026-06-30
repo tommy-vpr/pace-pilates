@@ -23,13 +23,17 @@ export default function Footer() {
           <div className="hidden h-12 w-[1px] bg-stone-300 sm:block"></div>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-2">
-              <IoMailOutline className="h-4 w-4" />
+              <div className="h-4 w-4 flex items-center justify-center">
+                <IoMailOutline className="h-auto" />
+              </div>
               <span className="text-xs not-italic leading-relaxed">
                 {EMAIL}
               </span>
             </div>
             <div className="flex items-start gap-2">
-              <IoLocationOutline className="h-4 w-6 sm:w-4" />
+              <div className="h-4 w-4 flex items-center justify-center">
+                <IoLocationOutline className="h-auto" />
+              </div>
               <address className="text-xs not-italic leading-relaxed">
                 {ADDRESS}
               </address>
