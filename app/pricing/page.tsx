@@ -18,17 +18,17 @@ type Plan = {
 };
 
 const DROP_IN: Plan[] = [
-  { name: "Drop-in", price: "$20", unit: "single class" },
-  { name: "5-Pack", price: "$90", unit: "$18 / class" },
-  { name: "10-Pack", price: "$160", unit: "$16 / class" },
+  { name: "Drop-in", price: "$25", unit: "single class" },
+  { name: "5-Pack", price: "$100", unit: "$20 / class" },
+  { name: "10-Pack", price: "$180", unit: "$18 / class" },
 ];
 
 const MEMBERSHIPS: Plan[] = [
-  { name: "8 Classes / Month", price: "$130", unit: "per month" },
-  { name: "Unlimited", price: "$200", unit: "per month" },
+  { name: "8 Classes / Month", price: "$145", unit: "per month" },
+  { name: "Unlimited", price: "$225", unit: "per month" },
   {
     name: "Founding Member",
-    price: "$185",
+    price: "$200",
     unit: "per month",
     note: "Limited-time rate, locked in for life",
   },
@@ -49,14 +49,14 @@ export default function PacePricing() {
           transition={{ duration: 0.9, ease: EASE }}
           className="flex flex-col items-center gap-3 bg-brand px-6 py-12 text-center text-stone-50"
         >
-          <span className="text-[11px] uppercase tracking-[0.3em] text-stone-700">
+          {/* <span className="text-[11px] uppercase tracking-[0.3em] text-stone-700">
             New here
-          </span>
+          </span> */}
           <h2 className="text-2xl font-extralight sm:text-3xl">
-            First 2 Weeks Unlimited
+            Intro offer for new clients
           </h2>
           <p className="text-4xl font-extralight sm:text-5xl text-stone-700">
-            $39
+            $20
           </p>
           <Link
             href="/schedule"

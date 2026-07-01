@@ -55,6 +55,14 @@ const FAQS: Faq[] = [
     q: "What if I have an injury or medical condition?",
     a: "If you have any injuries or medical conditions, please inform your instructor before class begins. We want to ensure your experience at Pace Studio is safe and enjoyable for you.",
   },
+  {
+    q: "How does the waitlist work?",
+    a: "Joining the waitlist is just like signing up for a class. If a spot opens up, you'll be automatically added to the class up to 1 hour before it starts. If you can no longer attend, please cancel at least 12 hours before class time — otherwise it will count as a no-show.",
+  },
+  {
+    q: "Can I freeze or cancel my membership?",
+    a: "Yes. You can freeze your membership once per year. To cancel your membership, you must do so at least 30 days before your next billing date. Please email us at info@pace-studio.com to request a freeze or cancellation.",
+  },
 ];
 
 const stagger = {
