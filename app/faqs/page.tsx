@@ -33,7 +33,8 @@ const FAQS: Faq[] = [
   },
   {
     q: "What is your cancellation policy?",
-    a: "We kindly ask that you cancel at least 12 hours before your class begins. This allows us to open the spot for other clients.",
+    a: `Clients must cancel their reservation at least 12 hours before the scheduled class start time.
+If you cancel less than 12 hours before class or do not attend your scheduled class, your class credit will be forfeited, and a late cancellation or no-show fee may apply.`,
   },
   {
     q: "How early should I arrive before class?",
