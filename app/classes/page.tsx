@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { CLASSES, fadeUp, stagger, EASE } from "@/lib/site";
@@ -12,9 +11,30 @@ import PageHero from "../components/PageHero";
 
 export default function PaceClasses() {
   return (
-    <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
+    <main className="min-h-screen text-stone-800 antialiased">
       {/* PAGE HERO */}
       <PageHero title="Our Classes" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="mt-24 max-w-3xl mx-auto bg-white/40 p-8 text-left text-sm shadow-lg shadow-stone-600/10"
+      >
+        <ul className="list-disc space-y-2 pl-5 font-extralight leading-relaxed text-stone-600">
+          <li>
+            Our heated classes are not available at this time. We are currently
+            offering Warm Mat Pilates classes, designed to provide a
+            comfortable, elevated workout experience while we prepare to launch
+            our heated studio.
+          </li>
+          <li>
+            Stay tuned for updates—we can't wait to bring our heated classes to
+            you soon!
+          </li>
+        </ul>
+      </motion.div>
 
       {/* ---------- Class cards ---------- */}
       <motion.section
@@ -22,7 +42,7 @@ export default function PaceClasses() {
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
         variants={stagger}
-        className="mx-auto my-14 grid max-w-5xl gap-8 px-4 sm:my-20 md:my-28 md:grid-cols-2"
+        className="mx-auto my-10 grid max-w-5xl gap-8 px-4 sm:my-20 md:my-28 md:grid-cols-2"
       >
         {CLASSES.map((c) => (
           <motion.article
@@ -45,12 +65,28 @@ export default function PaceClasses() {
             <p className="mt-5 font-extralight leading-relaxed text-stone-600">
               {c.blurb}
             </p>
-            <a
-              href="/schedule"
-              className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
-            >
-              Book {c.name}
-            </a>
+
+            {/* Classes with an enrollUrl open Mindbody enrollment in a new tab
+                ("Join Now"). Mindbody's classic portal blocks iframe embedding,
+                so a new tab is the reliable path. Everything else links to the
+                schedule page ("Book"). */}
+            {c.enrollUrl ? (
+              <a
+                href={c.enrollUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
+              >
+                Join Now
+              </a>
+            ) : (
+              <a
+                href="/schedule"
+                className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
+              >
+                Book {c.name}
+              </a>
+            )}
           </motion.article>
         ))}
       </motion.section>

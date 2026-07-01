@@ -24,6 +24,9 @@ export type ClassStyle = {
   kicker: string;
   blurb: string;
   heated?: string;
+  /** If set, the class card shows a "Join Now" button that opens this
+   *  Mindbody enrollment URL in a modal instead of linking to /schedule. */
+  enrollUrl?: string;
 };
 
 export const CLASSES: ClassStyle[] = [
@@ -41,6 +44,8 @@ export const CLASSES: ClassStyle[] = [
     blurb:
       "A contemporary take on Pilates for the modern mover. Designed for those who love a challenge, this class is practiced in a heated environment of 85–90°F to deepen your practice and elevate your results.",
     heated: "85–90°F",
+    enrollUrl:
+      "https://clients.mindbodyonline.com/classic/ws?studioid=5754511&stype=40&prodid=103",
   },
 ];
 
