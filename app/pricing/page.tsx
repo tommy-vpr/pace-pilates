@@ -130,9 +130,11 @@ export default function PacePricing() {
               <span>$225</span>
             </div>
 
-            <div className="border border-stone-300 bg-white/40 p-8">
-              <span>Founding Member</span>
-              <span>$200</span>
+            <div className="border border-stone-300 bg-white/40 p-8 flex flex-col">
+              <div>
+                <span>Founding Member</span>
+                <span>$200</span>
+              </div>
 
               <BuyContractButton serviceId="103" />
             </div>

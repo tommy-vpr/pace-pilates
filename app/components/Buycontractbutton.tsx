@@ -1,19 +1,5 @@
 "use client";
-
-/* ---------------------------------------------------------------- */
-/*  Pace Studio — Buy button backed directly by a Healcode           */
-/*  contract-link widget.                                            */
-/*                                                                   */
-/*  The healcode contract widget renders its OWN cart popup when      */
-/*  clicked (Mindbody's overlay). So we don't wrap it in a custom     */
-/*  modal — that just adds a redundant second click. Instead the      */
-/*  widget IS the button: one click goes straight to the cart.        */
-/*                                                                   */
-/*  healcode.js (loaded globally in layout) scans on page load and    */
-/*  hydrates this widget, turning the <healcode-widget> into a live   */
-/*  link. It must therefore be present at load — which it is, since    */
-/*  it renders inline in the card.                                    */
-/* ---------------------------------------------------------------- */
+import { useEffect, useRef } from "react";
 
 type BuyContractButtonProps = {
   serviceId: string;
@@ -24,6 +10,17 @@ export default function BuyContractButton({
   serviceId,
   label = "Buy Now",
 }: BuyContractButtonProps) {
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    if (mounted.current) return;
+    mounted.current = true;
+    const s = document.createElement("script");
+    s.src = "https://widgets.mindbodyonline.com/javascripts/healcode.js";
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
+
   return (
     <span className="healcode-buy-button mt-4 inline-block">
       <healcode-widget
