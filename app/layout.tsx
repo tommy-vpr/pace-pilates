@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 
 import Header from "./components/Header";
@@ -105,6 +106,13 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+
+        {/* Mindbody Healcode — powers the Login | Register account link and the
+            class enrollment widgets. Loaded once globally. */}
+        <Script
+          src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import EnrollModal from "../components/EnrollModal";
 
 import { fadeUp, stagger, EASE } from "@/lib/site";
 import PageHero from "../components/PageHero";
+import BuyContractButton from "../components/Buycontractbutton";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — Pricing                                            */
@@ -15,6 +18,7 @@ type Plan = {
   price: string;
   unit?: string;
   note?: string;
+  serviceId?: string; // ← add
 };
 
 const DROP_IN: Plan[] = [
@@ -31,10 +35,13 @@ const MEMBERSHIPS: Plan[] = [
     price: "$200",
     unit: "per month",
     note: "Limited-time rate, locked in for life",
+    serviceId: "103",
   },
 ];
 
 export default function PacePricing() {
+  const [buyPlan, setBuyPlan] = useState<Plan | null>(null);
+
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       {/* PAGE HERO */}
@@ -142,6 +149,9 @@ export default function PacePricing() {
                     {plan.note}
                   </span>
                 )}
+                {plan.serviceId && (
+                  <BuyContractButton serviceId={plan.serviceId} />
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -165,6 +175,13 @@ export default function PacePricing() {
             Get in Touch
           </Link>
         </motion.div>
+
+        {/* <EnrollModal
+          open={buyPlan !== null}
+          onClose={() => setBuyPlan(null)}
+          widgetId=""
+          title={buyPlan ? buyPlan.name : ""}
+        /> */}
       </div>
     </main>
   );

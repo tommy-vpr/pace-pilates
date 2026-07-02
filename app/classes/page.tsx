@@ -20,7 +20,7 @@ export default function PaceClasses() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7, ease: EASE }}
-        className="mt-24 max-w-3xl mx-auto bg-white/40 p-8 text-left text-sm shadow-lg shadow-stone-600/10"
+        className="mt-12 md:mt-24 max-w-[90%] md:max-w-3xl mx-auto bg-white/40 p-4 md:p-8 text-left text-sm shadow-lg shadow-stone-600/10"
       >
         <ul className="list-disc space-y-2 pl-5 font-extralight leading-relaxed text-stone-600">
           <li>
@@ -66,27 +66,12 @@ export default function PaceClasses() {
               {c.blurb}
             </p>
 
-            {/* Classes with an enrollUrl open Mindbody enrollment in a new tab
-                ("Join Now"). Mindbody's classic portal blocks iframe embedding,
-                so a new tab is the reliable path. Everything else links to the
-                schedule page ("Book"). */}
-            {c.enrollUrl ? (
-              <a
-                href={c.enrollUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
-              >
-                Join Now
-              </a>
-            ) : (
-              <a
-                href="/schedule"
-                className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
-              >
-                Book {c.name}
-              </a>
-            )}
+            <a
+              href="/schedule"
+              className="mt-8 w-fit cursor-pointer rounded-full bg-stone-800 px-6 py-2 text-center text-white transition-colors hover:bg-stone-700"
+            >
+              Book {c.name}
+            </a>
           </motion.article>
         ))}
       </motion.section>
