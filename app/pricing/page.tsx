@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { fadeUp, stagger, EASE } from "@/lib/site";
 import PageHero from "../components/PageHero";
 import BuyContractButton from "../components/Buycontractbutton";
+import { SlBadge } from "react-icons/sl";
 
 /* ---------------------------------------------------------------- */
 /*  Pace Studio — Pricing                                            */
@@ -120,22 +121,31 @@ export default function PacePricing() {
               throws inside healcode.js and white-screens the route. So these
               cards are static. */}
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="border border-stone-300 bg-white/40 p-8">
-              <span>8 Classes / Month</span>
-              <span>$145</span>
+            <div className="border border-stone-300 bg-white/40 p-8 flex flex-col gap-2">
+              <span className="text-stone-500">8 Classes / Month</span>
+              <span className="font-extralight text-3xl text-stone-800">
+                $145
+              </span>
             </div>
 
-            <div className="border border-stone-300 bg-white/40 p-8">
-              <span>Unlimited</span>
-              <span>$225</span>
+            <div className="border border-stone-300 bg-white/40 p-8 flex flex-col gap-2">
+              {" "}
+              <span className="text-stone-500">Unlimited</span>
+              <span className="font-extralight text-3xl text-stone-800">
+                $225
+              </span>
             </div>
 
-            <div className="border border-stone-300 bg-white/40 p-8 flex flex-col">
-              <div>
-                <span>Founding Member</span>
-                <span>$200</span>
+            <div className="border border-stone-300 bg-white/40 p-8 ">
+              {" "}
+              <div className="flex flex-col gap-2">
+                <span className="text-stone-500 flex items-center gap-1">
+                  Founding Member <SlBadge />
+                </span>
+                <span className="font-extralight text-3xl text-stone-800">
+                  $200
+                </span>
               </div>
-
               <BuyContractButton serviceId="103" />
             </div>
           </div>
