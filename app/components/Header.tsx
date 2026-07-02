@@ -18,7 +18,10 @@ const genome = Bebas_Neue({
 // Routes that must trigger a full page load instead of a client-side
 // transition. The Mindbody schedule widget keeps global iframe state that
 // breaks when React remounts it, so /schedule needs a fresh document load.
-const HARD_LINKS = new Set(["/schedule"]);
+// /pricing hosts the Healcode contract-link (Buy Now) widget, whose custom
+// element throws inside React's commit phase when upgraded during a soft
+// nav — so it likewise needs a fresh document load.
+const HARD_LINKS = new Set(["/schedule", "/pricing"]);
 
 function NavItem({
   href,
