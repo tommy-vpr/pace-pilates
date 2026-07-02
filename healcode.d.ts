@@ -15,6 +15,7 @@ declare module "react" {
           "data-mb-site-id"?: string;
           "data-bw-identity-site"?: string;
           "data-inner-html"?: string;
+          "data-service-id"?: string;
         },
         HTMLElement
       >;

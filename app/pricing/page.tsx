@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import EnrollModal from "../components/EnrollModal";
 
 import { fadeUp, stagger, EASE } from "@/lib/site";
 import PageHero from "../components/PageHero";
@@ -18,7 +16,7 @@ type Plan = {
   price: string;
   unit?: string;
   note?: string;
-  serviceId?: string; // ← add
+  serviceId?: string;
 };
 
 const DROP_IN: Plan[] = [
@@ -40,8 +38,6 @@ const MEMBERSHIPS: Plan[] = [
 ];
 
 export default function PacePricing() {
-  const [buyPlan, setBuyPlan] = useState<Plan | null>(null);
-
   return (
     <main className="min-h-screen bg-[#f6f3ec] text-stone-800 antialiased">
       {/* PAGE HERO */}
@@ -56,9 +52,6 @@ export default function PacePricing() {
           transition={{ duration: 0.9, ease: EASE }}
           className="flex flex-col items-center gap-3 bg-brand px-6 py-12 text-center text-stone-50"
         >
-          {/* <span className="text-[11px] uppercase tracking-[0.3em] text-stone-700">
-            New here
-          </span> */}
           <h2 className="text-2xl font-extralight sm:text-3xl">
             Intro offer for new clients
           </h2>
@@ -119,42 +112,31 @@ export default function PacePricing() {
           <h3 className="mt-2 text-2xl font-extralight sm:text-3xl">
             Monthly Memberships
           </h3>
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-            variants={stagger}
-            className="mt-8 grid gap-4 sm:grid-cols-3"
-          >
-            {MEMBERSHIPS.map((plan) => (
-              <motion.div
-                key={plan.name}
-                variants={fadeUp}
-                transition={{ duration: 0.6, ease: EASE }}
-                className="flex flex-col gap-2 border border-stone-300 bg-white/40 p-8 transition-colors hover:border-stone-800 hover:bg-white"
-              >
-                <span className="text-sm uppercase tracking-[0.15em] text-stone-500">
-                  {plan.name}
-                </span>
-                <span className="text-3xl font-extralight text-stone-800">
-                  {plan.price}
-                </span>
-                {plan.unit && (
-                  <span className="text-xs font-extralight text-stone-500">
-                    {plan.unit}
-                  </span>
-                )}
-                {plan.note && (
-                  <span className="mt-2 text-xs font-extralight leading-relaxed text-stone-600">
-                    {plan.note}
-                  </span>
-                )}
-                {plan.serviceId && (
-                  <BuyContractButton serviceId={plan.serviceId} />
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+
+          {/* NOTE: plain (non-motion) grid. The Healcode Buy Now widget must
+              live in a container that is NOT being animated by Framer Motion —
+              healcode hydrates during its page scan and reads a null layout
+              value if its parent is mid-animation (opacity/transform), which
+              throws inside healcode.js and white-screens the route. So these
+              cards are static. */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="border border-stone-300 bg-white/40 p-8">
+              <span>8 Classes / Month</span>
+              <span>$145</span>
+            </div>
+
+            <div className="border border-stone-300 bg-white/40 p-8">
+              <span>Unlimited</span>
+              <span>$225</span>
+            </div>
+
+            <div className="border border-stone-300 bg-white/40 p-8">
+              <span>Founding Member</span>
+              <span>$200</span>
+
+              <BuyContractButton serviceId="103" />
+            </div>
+          </div>
         </div>
 
         {/* CTA */}
@@ -175,13 +157,6 @@ export default function PacePricing() {
             Get in Touch
           </Link>
         </motion.div>
-
-        {/* <EnrollModal
-          open={buyPlan !== null}
-          onClose={() => setBuyPlan(null)}
-          widgetId=""
-          title={buyPlan ? buyPlan.name : ""}
-        /> */}
       </div>
     </main>
   );
