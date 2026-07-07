@@ -110,8 +110,8 @@ export default function PacePricing() {
           transition={{ duration: 0.9, ease: EASE }}
           className="flex flex-col items-center gap-3 bg-brand px-6 py-12 text-center text-stone-50"
         >
-          <h2 className="text-2xl font-extralight sm:text-3xl capitalize">
-            Intro offer for new clients
+          <h2 className="text-2xl font-extralight sm:text-3xl capitalize tracking-wide">
+            INTRO OFFER FOR NEW CLIENTS
           </h2>
           <p className="text-4xl font-extralight sm:text-5xl text-stone-700">
             $20
