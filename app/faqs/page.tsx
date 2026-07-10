@@ -46,7 +46,7 @@ If you cancel less than 12 hours before class or do not attend your scheduled cl
   },
   {
     q: "What if I am late?",
-    a: "For the safety and flow of class, we are unable to allow entry 5 minutes after class has begun.",
+    a: "For the safety and flow of class, we are unable to allow entry 10 minutes after class has begun.",
   },
   {
     q: "How long is class?",
