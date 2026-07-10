@@ -59,7 +59,7 @@ export default function PaceClasses() {
             </h2>
             {c.heated && (
               <span className="mt-2 w-fit rounded-full border border-stone-300 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-stone-500">
-                Heated · {c.heated}
+                {c.heated}
               </span>
             )}
             <p className="mt-5 font-extralight leading-relaxed text-stone-600">

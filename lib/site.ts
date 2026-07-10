@@ -42,7 +42,7 @@ export const CLASSES: ClassStyle[] = [
     name: "Pace Sculpt",
     kicker: "Contemporary",
     blurb:
-      "A contemporary take on Pilates for the modern mover. Designed for those who love a challenge, this class is practiced in a heated environment of 85–90°F to deepen your practice and elevate your results.",
+      "A contemporary take on Pilates for the modern mover. Designed for those who love a challenge, this class is practiced in warm environment to deepen your practice and elevate your results.",
     heated: "85–90°F",
     enrollWidgetId: "86114960448b",
   },
