@@ -38,11 +38,18 @@ export const CLASSES: ClassStyle[] = [
       "Experience the foundations of classical Pilates where it all began. This class returns to the roots of the method in a warm, welcoming environment, perfect for building strength, alignment, and mindful movement.",
   },
   {
+    key: "Contemporary",
+    name: "Pace Fusion",
+    kicker: "Classical and Contemporary",
+    blurb:
+      "The best of both worlds! Pace Fusion combines classical Pilates with contemporary movement in a heated studio for a dynamic, full-body workout that builds strength, balance, and control.",
+  },
+  {
     key: "sculpt",
     name: "Pace Sculpt",
-    kicker: "Contemporary",
+    kicker: "Contemporary (heated and non heated)",
     blurb:
-      "A contemporary take on Pilates for the modern mover. Designed for those who love a challenge, this class is practiced in warm environment to deepen your practice and elevate your results.",
+      "A contemporary take on Pilates designed for those who love a challenge. With heated and non-heated options, this class builds strength, control, and confidence while elevating your practice.",
 
     enrollWidgetId: "86114960448b",
   },

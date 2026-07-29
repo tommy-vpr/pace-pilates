@@ -24,14 +24,12 @@ export default function PaceClasses() {
       >
         <ul className="list-disc space-y-2 pl-5 font-extralight leading-relaxed text-stone-600">
           <li>
-            Our heated classes are not available at this time. We are currently
-            offering Warm Mat Pilates classes, designed to provide a
-            comfortable, elevated workout experience while we prepare to launch
-            our heated studio.
+            Our heated classes may not be at full temperature just yet, but
+            you’ll still enjoy a comfortable and effective workout experience.
           </li>
           <li>
-            Stay tuned for updates—we can't wait to bring our heated classes to
-            you soon!
+            Stay tuned for updates! We truly appreciate your patience and
+            understanding!
           </li>
         </ul>
       </motion.div>
@@ -42,7 +40,7 @@ export default function PaceClasses() {
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
         variants={stagger}
-        className="mx-auto my-10 grid max-w-5xl gap-8 px-4 sm:my-20 md:my-28 md:grid-cols-2"
+        className="mx-auto my-10 grid max-w-7xl gap-8 px-4 sm:my-20 md:my-28 sm:grid-cols-2 md:grid-cols-3"
       >
         {CLASSES.map((c) => (
           <motion.article
