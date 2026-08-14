@@ -30,13 +30,13 @@ export type ClassStyle = {
 };
 
 export const CLASSES: ClassStyle[] = [
-  {
-    key: "align",
-    name: "Pace Align",
-    kicker: "Classical",
-    blurb:
-      "Experience the foundations of classical Pilates where it all began. This class returns to the roots of the method in a warm, welcoming environment, perfect for building strength, alignment, and mindful movement.",
-  },
+  // {
+  //   key: "align",
+  //   name: "Pace Align",
+  //   kicker: "Classical",
+  //   blurb:
+  //     "Experience the foundations of classical Pilates where it all began. This class returns to the roots of the method in a warm, welcoming environment, perfect for building strength, alignment, and mindful movement.",
+  // },
   {
     key: "Contemporary",
     name: "Pace Fusion",

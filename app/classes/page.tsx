@@ -40,7 +40,7 @@ export default function PaceClasses() {
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
         variants={stagger}
-        className="mx-auto my-10 grid max-w-7xl gap-8 px-4 sm:my-20 md:my-28 sm:grid-cols-2 md:grid-cols-3"
+        className="mx-auto my-10 grid max-w-7xl gap-8 px-4 sm:my-20 md:my-28 sm:grid-cols-2"
       >
         {CLASSES.map((c) => (
           <motion.article
