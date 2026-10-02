@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiChevronDown } from "react-icons/bi";
 
@@ -12,12 +12,38 @@ import PageHero from "../components/PageHero";
 /*  Pace Studio — FAQs                                               */
 /* ---------------------------------------------------------------- */
 
-type Faq = { q: string; a: string };
+type Faq = { q: string; a: ReactNode };
 
 const FAQS: Faq[] = [
   {
     q: "What do I need to bring?",
-    a: "Please bring a mat and grip socks.",
+    a: (
+      <>
+        Please bring <strong>a mat</strong> and <strong>grip socks</strong>.
+      </>
+    ),
+  },
+  {
+    q: "Studio Late Policy?",
+    a: (
+      <>
+        We offer a <strong>5-minute grace period</strong>. Clients who arrive
+        more than 5 minutes after class begins may be denied entry to ensure the
+        safety and experience of all participants.
+      </>
+    ),
+  },
+  {
+    q: "What is your cancellation policy?",
+    a: (
+      <>
+        Clients <strong>must cancel</strong> their reservation{" "}
+        <strong>at least 12 hours</strong> before the scheduled class start
+        time. If you cancel less than 12 hours before class or do not attend
+        your scheduled class, your class credit will be forfeited, and a late
+        cancellation or no-show fee may apply.
+      </>
+    ),
   },
   {
     q: "Is this class suitable for beginners?",
@@ -27,17 +53,10 @@ const FAQS: Faq[] = [
     q: "Can I attend class if I'm pregnant?",
     a: "Yes, you are welcome to join us! However, please keep in mind that our classes are held in a heated environment. We recommend consulting with your doctor before attending.",
   },
-  {
-    q: "What is your cancellation policy?",
-    a: `Clients must cancel their reservation at least 12 hours before the scheduled class start time. If you cancel less than 12 hours before class or do not attend your scheduled class, your class credit will be forfeited, and a late cancellation or no-show fee may apply.`,
-  },
+
   {
     q: "How early should I arrive before class?",
     a: "We recommend arriving 5 minutes before class. If it's your first time, please arrive 10 minutes early so you can meet your instructor and get familiar with the studio!",
-  },
-  {
-    q: "Studio Late Policy?",
-    a: "We offer a 5-minute grace period . Clients who arrive more than 5 minutes after class begins may be denied entry to ensure the safety and experience of all participants.",
   },
   {
     q: "Where are you located and is there parking?",
@@ -109,7 +128,7 @@ export default function PaceFaqs() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="max-w-xl pb-6 font-extralight leading-relaxed text-stone-600">
+                      <p className="max-w-xl pb-6 font-extralight leading-relaxed text-stone-600 [&_strong]:font-semibold [&_strong]:text-stone-900">
                         {faq.a}
                       </p>
                     </motion.div>
