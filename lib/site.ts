@@ -49,7 +49,7 @@ export const CLASSES: ClassStyle[] = [
     name: "Pace Sculpt",
     kicker: "Contemporary (heated and non heated)",
     blurb:
-      "A contemporary take on Pilates designed for those who love a challenge. With heated and non-heated options, this class builds strength, control, and confidence while elevating your practice.",
+      "A contemporary take on Pilates designed for those who love a challenge. This full-body workout builds strength, control, and confidence while elevating your practice. Available in heated and non-heated formats.",
 
     enrollWidgetId: "86114960448b",
   },
@@ -67,6 +67,7 @@ export const FOOTER_LINKS: FooterColumn[] = [
       { label: "Classes", href: "/classes" },
       { label: "Schedule", href: "/schedule" },
       { label: "Pricing", href: "/pricing" },
+      { label: "FAQ", href: "/faqs" },
     ],
   },
   {

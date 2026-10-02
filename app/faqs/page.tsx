@@ -17,15 +17,11 @@ type Faq = { q: string; a: string };
 const FAQS: Faq[] = [
   {
     q: "What do I need to bring?",
-    a: "Bring your mat and grip socks. We'll take care of the rest!",
+    a: "Please bring a mat and grip socks.",
   },
   {
     q: "Is this class suitable for beginners?",
     a: "Absolutely! Everyone is welcome at Pace Studio, no matter where you are in your fitness journey.",
-  },
-  {
-    q: "Do I need any prior Pilates experience?",
-    a: "Not at all. Pace is a place for everyone — whether you're brand new or returning to movement, you belong here.",
   },
   {
     q: "Can I attend class if I'm pregnant?",
@@ -33,28 +29,19 @@ const FAQS: Faq[] = [
   },
   {
     q: "What is your cancellation policy?",
-    a: `Clients must cancel their reservation at least 12 hours before the scheduled class start time.
-If you cancel less than 12 hours before class or do not attend your scheduled class, your class credit will be forfeited, and a late cancellation or no-show fee may apply.`,
+    a: `Clients must cancel their reservation at least 12 hours before the scheduled class start time. If you cancel less than 12 hours before class or do not attend your scheduled class, your class credit will be forfeited, and a late cancellation or no-show fee may apply.`,
   },
   {
     q: "How early should I arrive before class?",
     a: "We recommend arriving 5 minutes before class. If it's your first time, please arrive 10 minutes early so you can meet your instructor and get familiar with the studio!",
   },
   {
+    q: "Studio Late Policy?",
+    a: "We offer a 5-minute grace period . Clients who arrive more than 5 minutes after class begins may be denied entry to ensure the safety and experience of all participants.",
+  },
+  {
     q: "Where are you located and is there parking?",
     a: "Parking is available in the parking structure located next to our building.",
-  },
-  {
-    q: "What if I am late?",
-    a: "For the safety and flow of class, we are unable to allow entry 5 minutes after class has begun.",
-  },
-  {
-    q: "How long is class?",
-    a: "Each class is 50 minutes long.",
-  },
-  {
-    q: "What if I have an injury or medical condition?",
-    a: "If you have any injuries or medical conditions, please inform your instructor before class begins. We want to ensure your experience at Pace Studio is safe and enjoyable for you.",
   },
   {
     q: "How does the waitlist work?",
