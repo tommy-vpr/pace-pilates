@@ -82,6 +82,13 @@ export const FOOTER_LINKS: FooterColumn[] = [
       { label: "Newsletter", href: "#", icon: FaEnvelope },
     ],
   },
+  {
+    heading: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+    ],
+  },
 ];
 
 /* --- shared motion variants (used across pages) --- */

@@ -41,13 +41,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex gap-8 sm:gap-16">
+        <div className="flex gap-6 sm:gap-12">
           {FOOTER_LINKS.map((col) => (
             <div
               key={col.heading}
-              className="text-[12px] md:text-base leading-[2]"
+              className="text-[11px] md:text-xs leading-[2.1] text-stone-600"
             >
-              <div className="mb-1 text-stone-900 underline underline-offset-4">
+              <div className="mb-1 text-xs md:text-sm text-stone-900 underline underline-offset-4">
                 {col.heading}
               </div>
               {col.links.map((link) => {
@@ -57,12 +57,12 @@ export default function Footer() {
                 const isHardLink = link.href === "/schedule";
                 const inner = (
                   <>
-                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    {Icon && <Icon className="h-3 w-3" />}
                     <span>{link.label}</span>
                   </>
                 );
                 const className =
-                  "flex items-center gap-2 transition-colors hover:text-stone-500";
+                  "flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-stone-900";
                 return isHardLink ? (
                   <a key={link.label} href={link.href} className={className}>
                     {inner}
